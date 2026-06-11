@@ -6,5 +6,5 @@
 - Five MCP-only agent skills: session, catalog, graph-plan, governance, direct-fallback
 - AgentReady MCP v1 as default endpoint
 - Direct MCP as controlled fallback
-- No scripts; references-only skill design
+- References-first skill design
 - AgentReady-first architecture

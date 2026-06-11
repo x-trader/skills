@@ -15,7 +15,7 @@ Default endpoint: `/mcp/agent-ready/v1`
 2. Extract from bootstrap output: project name, version, mode (Design/LiveProtected), capabilities, risk policy, and resource links.
 3. Use `get_current_project_context` to refresh session state, not to bootstrap.
 4. Preserve session identity (session ID, project context) across all follow-up calls in the same conversation.
-5. Do not silently mix Direct MCP (`/mcp`) context with AgentReady session context — they use different `get_current_project_context` implementations.
+5. Do not silently mix Direct MCP (`/mcp`) context with AgentReady session context — the two surfaces return different context scopes.
 
 ## Primary Tools
 

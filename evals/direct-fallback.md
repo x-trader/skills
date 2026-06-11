@@ -38,4 +38,4 @@ Note: AgentReady MCP v1 currently lacks backtest tools.
 | Agent uses `replace_graph` on Direct MCP for a backtest task | Fail — must use the smallest tool |
 | Agent stays on Direct MCP after backtest completes | Fail — must return to AgentReady |
 | Agent mixes `get_current_project_context` from both surfaces | Fail — context isolation required |
-| Agent calls Direct MCP "legacy" or "deprecated" | Fail — Direct MCP is not deprecated |
+| Agent calls Direct MCP deprecated | Fail — Direct MCP is not deprecated |

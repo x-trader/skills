@@ -14,4 +14,4 @@
 - Direct MCP has broader low-level direct mutation tools.
 - Direct MCP is not deprecated; it is not the default agent endpoint.
 - Direct MCP context is user-scoped, not session-isolated like AgentReady.
-- `get_current_project_context` on Direct MCP is a different implementation from `get_current_project_context` on AgentReady. Context from the two surfaces must not be mixed.
+- `get_current_project_context` on Direct MCP returns Direct MCP context, while `get_current_project_context` on AgentReady returns AgentReady session context. Context from the two surfaces must not be mixed.

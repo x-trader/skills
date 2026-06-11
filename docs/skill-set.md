@@ -12,4 +12,4 @@ Future skill after AgentReady execution/backtest tools exist:
 
 - `xtrader-mcp-agent-ready-execution`
 
-Scope: these skills guide agents that use XTrader MCP tools. They are not for backend or frontend development.
+Scope: these skills guide agents that use XTrader MCP tools. They are not for non-MCP workflows.

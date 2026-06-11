@@ -47,7 +47,7 @@ See `docs/tool-map.md` for the full Direct MCP tool list.
 2. Explain to the user why fallback is needed — reference the specific missing capability.
 3. Prefer read-only Direct MCP tools when possible.
 4. Direct MCP has broader low-level mutation tools — use the smallest tool that accomplishes the task.
-5. Direct MCP context is user-scoped, not session-isolated. `get_current_project_context` on Direct MCP differs from the AgentReady version.
+5. Direct MCP context is user-scoped, not session-isolated. Treat Direct MCP context separately from AgentReady session context.
 6. Connect via `connect_project` when starting a Direct MCP session.
 7. For Direct MCP writes, require plan, validation, snapshot, and confirmation when available.
 8. Return to AgentReady MCP v1 workflow after the fallback task completes.
@@ -66,7 +66,7 @@ AgentReady attempt -> identify missing capability
 
 ## Direct MCP Context Warning
 
-`get_current_project_context` on Direct MCP is a different implementation from `get_current_project_context` on AgentReady. Do not mix them silently.
+`get_current_project_context` on Direct MCP returns Direct MCP context. `get_current_project_context` on AgentReady returns AgentReady session context. Do not mix them silently.
 
 ## Forbidden / Default-Avoid Cases
 

@@ -2,7 +2,7 @@
 
 Agent skills for working with XTrader MCP surfaces.
 
-This repository is intentionally focused on MCP usage, not backend coding or project development.
+This repository is intentionally focused on MCP agent workflows only.
 
 Default MCP surface for agents:
 
@@ -40,7 +40,7 @@ Future optional skill:
 
 - AgentReady v1 is the default surface for agents.
 - Direct MCP is a controlled fallback / trusted low-level surface.
-- Skills guide agents; they do not replace MCP tools or backend validation.
+- Skills guide agents; they do not replace MCP tools, validation, confirmation, or governance.
 - Never dump the full catalog into prompt context.
 - Never guess node codes.
 - Prefer plans, validation, governance, and controlled apply flows.

@@ -2,7 +2,7 @@
 
 Keep skills small, operational, and MCP-focused.
 
-Do not add coding/development skills here unless a new plugin is created.
+Do not add skills outside the XTrader MCP agent workflow scope.
 
 Each skill should include:
 

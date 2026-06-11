@@ -24,5 +24,5 @@ Skills are activated automatically when the task matches their `description` fro
 
 ## Dependencies
 
-- An agent runtime that supports Agent Skills (e.g., opencode)
+- An agent runtime that supports Agent Skills
 - Access to an XTrader MCP server exposing `/mcp/agent-ready/v1` and optionally `/mcp`
