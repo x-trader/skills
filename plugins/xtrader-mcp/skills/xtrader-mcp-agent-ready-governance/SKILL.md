@@ -16,7 +16,7 @@ Use this skill before any write or risky operation.
 5. Require snapshot for risky graph changes when policy says so.
 6. Require confirmation for destructive/live/protected changes.
 7. Never silently apply high-risk changes.
-8. Prefer AgentReady governed tools over legacy direct mutation.
+8. Prefer AgentReady governed tools over Direct MCP direct mutation.
 
 ## Risk Examples
 
@@ -36,4 +36,4 @@ describe_mcp_tooling
 
 ## Anti-Patterns
 
-Do not treat observe-mode governance as permission to be careless, bypass validation, use legacy write tools when AgentReady governed tools exist, or hide risk from the user.
+Do not treat observe-mode governance as permission to be careless, bypass validation, use Direct MCP write tools when AgentReady governed tools exist, or hide risk from the user.

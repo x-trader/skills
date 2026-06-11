@@ -8,13 +8,13 @@ Default endpoint:
 /mcp/agent-ready/v1
 ```
 
-Legacy endpoint:
+Direct endpoint:
 
 ```text
 /mcp
 ```
 
-Do not use legacy tools unless AgentReady v1 lacks the required capability.
+Do not use Direct MCP tools unless AgentReady v1 lacks the required capability.
 
 Recommended skill activation order:
 
@@ -22,4 +22,4 @@ Recommended skill activation order:
 2. `xtrader-mcp-agent-ready-governance`
 3. `xtrader-mcp-agent-ready-catalog`
 4. `xtrader-mcp-agent-ready-graph-plan`
-5. `xtrader-mcp-legacy-interop` only when needed
+5. `xtrader-mcp-direct-fallback` only when needed

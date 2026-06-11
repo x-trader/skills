@@ -10,13 +10,13 @@ Default MCP surface for agents:
 /mcp/agent-ready/v1
 ```
 
-Legacy MCP surface:
+Direct MCP surface:
 
 ```text
 /mcp
 ```
 
-Use the legacy surface only when AgentReady v1 does not expose the required capability.
+Use the Direct MCP surface only when AgentReady v1 does not expose the required capability.
 
 ## Plugin
 
@@ -30,7 +30,7 @@ plugins/xtrader-mcp
 - `xtrader-mcp-agent-ready-catalog`
 - `xtrader-mcp-agent-ready-graph-plan`
 - `xtrader-mcp-agent-ready-governance`
-- `xtrader-mcp-legacy-interop`
+- `xtrader-mcp-direct-fallback`
 
 Future optional skill:
 
@@ -39,7 +39,7 @@ Future optional skill:
 ## Design Principles
 
 - AgentReady v1 is the default surface for agents.
-- Legacy MCP is a controlled fallback.
+- Direct MCP is a controlled fallback / trusted low-level surface.
 - Skills guide agents; they do not replace MCP tools or backend validation.
 - Never dump the full catalog into prompt context.
 - Never guess node codes.

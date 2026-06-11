@@ -21,6 +21,7 @@ Default agent endpoint:
 4. Read `describe_mcp_tooling` early when planning writes.
 5. Track project mode and capabilities from bootstrap output.
 6. Preserve session identity when making follow-up calls.
+7. Do not silently mix Direct MCP context with AgentReady context.
 
 ## Primary Tools
 
@@ -40,4 +41,4 @@ open_project_session or get_agent_bootstrap_context
 
 ## Anti-Patterns
 
-Do not guess active project context, mutate before opening a session, mix AgentReady and legacy contexts silently, or use legacy `/mcp` just because it has more tools.
+Do not guess active project context, mutate before opening a session, mix AgentReady and Direct MCP contexts silently, or use Direct MCP `/mcp` just because it has more tools.

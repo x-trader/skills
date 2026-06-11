@@ -4,7 +4,7 @@
     {
       "name": "xtrader-mcp",
       "path": "../../plugins/xtrader-mcp",
-      "description": "Agent skills for XTrader MCP AgentReady and legacy interop workflows."
+      "description": "Agent skills for XTrader MCP AgentReady and direct fallback workflows."
     }
   ]
 }

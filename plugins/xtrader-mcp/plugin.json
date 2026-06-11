@@ -1,7 +1,7 @@
 {
   "name": "xtrader-mcp",
   "displayName": "XTrader MCP Skills",
-  "description": "Agent skills for working with XTrader MCP project sessions, semantic catalog discovery, graph plans, governance, and legacy fallback.",
+  "description": "Agent skills for working with XTrader MCP project sessions, semantic catalog discovery, graph plans, governance, and direct fallback.",
   "version": "0.1.0",
   "publisher": "x-trader"
 }

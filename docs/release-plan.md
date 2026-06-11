@@ -5,7 +5,7 @@
 - MCP-only instruction skills
 - No scripts
 - AgentReady-first design
-- Legacy fallback guidance
+- Direct fallback guidance
 
 ## v0.2.0
 

@@ -4,7 +4,7 @@ This plugin contains MCP-only skills for XTrader.
 
 ## MCP Surfaces
 
-### AgentReady v1
+### AgentReady MCP v1
 
 ```text
 /mcp/agent-ready/v1
@@ -22,7 +22,7 @@ Primary capabilities:
 - graph plan validation/apply
 - governance metadata
 
-### Legacy MCP
+### Direct MCP
 
 ```text
 /mcp
@@ -30,7 +30,7 @@ Primary capabilities:
 
 Use only as a controlled fallback.
 
-Legacy has broader tool coverage but more direct mutation tools and weaker session isolation.
+Direct MCP has broader tool coverage but more direct mutation tools and weaker session isolation.
 
 ## Skills
 
@@ -39,5 +39,5 @@ skills/xtrader-mcp-agent-ready-session
 skills/xtrader-mcp-agent-ready-catalog
 skills/xtrader-mcp-agent-ready-graph-plan
 skills/xtrader-mcp-agent-ready-governance
-skills/xtrader-mcp-legacy-interop
+skills/xtrader-mcp-direct-fallback
 ```
