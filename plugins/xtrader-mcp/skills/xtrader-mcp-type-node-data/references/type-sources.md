@@ -6,7 +6,7 @@ XTrader MCP type references can come from three sources:
 |---|---|---|
 | Project | User-defined type in the active project version | Safest to edit only after usage/impact analysis |
 | Package | Type supplied by a package dependency | Do not mutate package types through project workflows |
-| System | Primitive/system type exposed by MCP metadata | Treat as read-only |
+| System | Primitive/system type exposed by MCP metadata, including all .NET BCL types extracted from SDK reference assemblies | Treat as read-only. See the dotnet-runtime-nodes reference for naming conventions and package grouping |
 
 Search project context first. Use package/system types only when returned by MCP discovery or compatibility tools.
 

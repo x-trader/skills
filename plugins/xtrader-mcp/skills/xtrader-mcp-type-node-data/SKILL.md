@@ -19,6 +19,23 @@ AgentReady MCP v1 remains the default. Use Direct MCP only when AgentReady lacks
 6. Do not infer inheritance/base-type behavior unless MCP metadata explicitly returns it.
 7. For Direct writes, load governance and direct-fallback skills.
 
+## .NET Runtime Node Knowledge
+
+The entire .NET BCL is available as nodes. Agents should use knowledge of .NET type names and member patterns to predict node display names during catalog searches.
+
+| Member | Display Pattern | Example |
+|---|---|---|
+| Constructor | `Create {TypeName}` | `Create List<T>` |
+| Method | `{MethodName} {TypeName}` | `Add List<T>`, `Parse Int32` |
+| Property getter | `Get {PropertyName} of {TypeName}` | `Get Count of List<T>` |
+| Property setter | `Set {PropertyName} of {TypeName}` | `Set Capacity of List<T>` |
+| Enum constant | `{TypeName}.{MemberName}` | `DayOfWeek.Sunday` |
+| Enum parse | `Parse {TypeName}` / `Try Parse {TypeName}` | `Parse DayOfWeek` |
+| Flags compose | `Compose {TypeName} Flags` | `Compose BindingFlags Flags` |
+| Flags split | `Split {TypeName} Flags` | `Split BindingFlags Flags` |
+
+Each assembly is its own package (`System.Runtime`, `System.Collections`, `System.Linq`, etc.). Load the [dotnet-runtime-nodes](references/dotnet-runtime-nodes.md) reference for the full naming table, excluded types/members, and search guidance.
+
 ## AgentReady-First Workflow
 
 ```text
