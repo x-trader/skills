@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "0.1",
+  "plugins": [
+    {
+      "name": "xtrader-mcp",
+      "path": "../../plugins/xtrader-mcp",
+      "description": "Agent skills for XTrader MCP AgentReady and legacy interop workflows."
+    }
+  ]
+}
