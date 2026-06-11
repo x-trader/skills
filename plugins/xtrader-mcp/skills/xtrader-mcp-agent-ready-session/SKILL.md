@@ -56,4 +56,5 @@ open_project_session or get_agent_bootstrap_context
 - **Catalog**: load `xtrader-mcp-agent-ready-catalog` when searching nodes, types, or patterns.
 - **Type/node data**: load `xtrader-mcp-type-node-data` when full type details, node schema, form data, generic params, or array port types are involved.
 - **Graph plan**: load `xtrader-mcp-agent-ready-graph-plan` when creating or editing graphs.
+- **Backtest results**: load `xtrader-mcp-backtest-results` when the user asks to run, inspect, debug, or summarize backtests.
 - **Direct fallback**: load `xtrader-mcp-direct-fallback` only when AgentReady v1 lacks the required capability.

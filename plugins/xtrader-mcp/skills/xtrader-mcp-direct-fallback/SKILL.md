@@ -54,6 +54,7 @@ See `docs/tool-map.md` for the full Direct MCP tool list.
 7. For Direct MCP writes, require plan, validation, snapshot, and confirmation when available.
 8. Return to AgentReady MCP v1 workflow after the fallback task completes.
 9. For type/node detail or mutation, load `xtrader-mcp-type-node-data` before choosing Direct tools.
+10. For backtest execution or result analysis, load `xtrader-mcp-backtest-results` before choosing Direct backtest tools.
 
 ## Required Fallback Workflow
 
@@ -87,9 +88,11 @@ AgentReady attempt -> identify missing capability
 - Falling back to Direct MCP for every operation
 - Calling Direct MCP deprecated — it is not deprecated, it is not the default
 - Using Direct type/node tools without type/node data guidance
+- Using Direct backtest tools without backtest-results guidance
 
 ## Load Next Skill
 
 - **Session**: reload `xtrader-mcp-agent-ready-session` after fallback to refresh context.
 - **Governance**: load `xtrader-mcp-agent-ready-governance` before Direct MCP writes.
 - **Type/node data**: load `xtrader-mcp-type-node-data` before Direct type/node detail or mutation tools.
+- **Backtest results**: load `xtrader-mcp-backtest-results` before Direct backtest tools.

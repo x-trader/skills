@@ -13,9 +13,10 @@
    - `create_backtest` with project and version parameters
    - `wait_backtest` until completion
    - `get_backtest_snapshot` or `query_backtest_results` for results
-5. After task completes, return to `/mcp/agent-ready/v1`.
-6. Call `get_current_project_context` on AgentReady to refresh session context.
-7. Continue with AgentReady workflow.
+5. Load `xtrader-mcp-backtest-results` for result summaries, issues, logs, symbols, and positions.
+6. After task completes, return to `/mcp/agent-ready/v1`.
+7. Call `get_current_project_context` on AgentReady to refresh session context.
+8. Continue with AgentReady workflow.
 
 ## Expected Output
 

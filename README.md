@@ -31,6 +31,7 @@ plugins/xtrader-mcp
 - `xtrader-mcp-type-node-data`
 - `xtrader-mcp-agent-ready-graph-plan`
 - `xtrader-mcp-agent-ready-governance`
+- `xtrader-mcp-backtest-results`
 - `xtrader-mcp-direct-fallback`
 
 Future optional skill:
@@ -43,5 +44,6 @@ Future optional skill:
 - Direct MCP is a controlled fallback / trusted low-level surface.
 - Skills guide agents; they do not replace MCP tools, validation, confirmation, or governance.
 - Never dump the full catalog into prompt context.
+- Never dump full backtest logs, drawings, or positions into prompt context.
 - Never guess node codes.
 - Prefer plans, validation, governance, and controlled apply flows.

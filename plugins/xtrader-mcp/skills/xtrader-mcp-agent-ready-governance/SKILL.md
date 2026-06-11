@@ -51,6 +51,7 @@ Load this skill before any write or risky operation.
 7. Never silently apply high-risk changes.
 8. Prefer AgentReady governed tools over Direct MCP direct mutation.
 9. Treat type update/delete, node deletion, node data mutation, and generic/array port mutation as governance-sensitive.
+10. Treat backtest result reads as generally read-only; treat `create_backtest` as a Direct MCP action that must be explained and bounded.
 
 ## Standard Workflow
 
@@ -75,10 +76,12 @@ describe_mcp_tooling
 - Silently applying high-risk changes
 - Updating/deleting types without usage and impact analysis
 - Mutating node data or generic params without validation
+- Mutating project graph/type/package state during backtest result inspection
 
 ## Load Next Skill
 
 - **Session**: load `xtrader-mcp-agent-ready-session` first if no active session.
 - **Graph plan**: load `xtrader-mcp-agent-ready-graph-plan` for plan creation and validation.
 - **Type/node data**: load `xtrader-mcp-type-node-data` before type mutation, node data mutation, generic params, or array port changes.
+- **Backtest results**: load `xtrader-mcp-backtest-results` for backtest execution or result inspection.
 - **Direct fallback**: load `xtrader-mcp-direct-fallback` only when AgentReady v1 lacks the required capability.

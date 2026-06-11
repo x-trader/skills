@@ -21,6 +21,7 @@ Primary capabilities:
 - type and node data guidance
 - graph pattern search
 - graph plan validation/apply
+- backtest result analysis through Direct MCP fallback
 - governance metadata
 
 ### Direct MCP
@@ -41,5 +42,6 @@ skills/xtrader-mcp-agent-ready-catalog
 skills/xtrader-mcp-type-node-data
 skills/xtrader-mcp-agent-ready-graph-plan
 skills/xtrader-mcp-agent-ready-governance
+skills/xtrader-mcp-backtest-results
 skills/xtrader-mcp-direct-fallback
 ```

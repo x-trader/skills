@@ -10,7 +10,7 @@ This repository is a skills pack for agents that use XTrader MCP.
    ```
    ls plugins/xtrader-mcp/skills/
    ```
-   Expected output: six skill directories.
+   Expected output: seven skill directories.
 
 ## Activation
 
@@ -21,7 +21,8 @@ Skills are activated automatically when the task matches their `description` fro
 3. `xtrader-mcp-agent-ready-catalog`
 4. `xtrader-mcp-type-node-data` (when type details, node schema, form data, or generic params are involved)
 5. `xtrader-mcp-agent-ready-graph-plan`
-6. `xtrader-mcp-direct-fallback` (only when needed)
+6. `xtrader-mcp-backtest-results` (for backtest execution or result analysis)
+7. `xtrader-mcp-direct-fallback` (only when needed)
 
 ## Dependencies
 
