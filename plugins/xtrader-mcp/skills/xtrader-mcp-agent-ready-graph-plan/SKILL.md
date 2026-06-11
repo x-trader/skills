@@ -1,45 +1,75 @@
 ---
 name: xtrader-mcp-agent-ready-graph-plan
-description: Use when creating, editing, repairing, validating, explaining, or applying XTrader graph changes through AgentReady MCP graph plans. Guides agents to prefer operation-based plans, validation, snapshots, and governed apply over direct graph replacement.
+description: Creates, validates, and applies operation-based graph plans through XTrader AgentReady MCP. Guides agents to use instantiate_graph_pattern for known patterns, validate before apply, satisfy governance requirements, and avoid direct graph replacement. Use when creating, editing, repairing, or applying graph changes through AgentReady MCP.
 ---
 
 # XTrader MCP AgentReady Graph Plan Skill
 
-Use this skill for graph creation, editing, repair, and mutation workflows.
+Load this skill for graph creation, editing, repair, and mutation workflows.
+
+## AgentReady Exposed Tools
+
+- `instantiate_graph_pattern` — create a plan from a known graph pattern (Medium risk)
+- `validate_graph_plan` — validate plan preconditions without mutating (Low risk)
+- `apply_graph_plan` — apply validated plan (High risk, requires confirmation/snapshot)
 
 ## Core Rules
 
-1. Prefer operation-based graph plans.
-2. Validate before apply.
-3. Use dry-run when available.
-4. Do not use graph replacement as default strategy.
-5. Do not connect ports without compatibility check.
-6. Explain changes as operations.
-7. For risky changes, require governance, snapshot, or confirmation.
+1. Prefer operation-based graph plans over graph replacement.
+2. Always validate before apply.
+3. Do not use graph replacement as default strategy.
+4. Do not connect ports without a compatibility check from catalog skill.
+5. Explain changes as operations — add node, connect ports, set value, etc.
+6. For risky changes, load governance skill and satisfy snapshot/confirmation requirements.
+7. Use `instantiate_graph_pattern` when a known pattern fits the task.
 
-## Primary Tools
+## Operation Vocabulary
 
-- `instantiate_graph_pattern`
-- `validate_graph_plan`
-- `apply_graph_plan`
+When building or describing plans, use these operation types:
 
-Related catalog tools:
+- `addGraphNode` — insert a new node instance
+- `removeGraphNode` — remove a node and its edges
+- `connectPorts` — connect output to input port
+- `disconnectEdge` — remove a specific edge
+- `setNodeFormData` — configure node form values
+- `setInputPortValue` — set default value for an input port
+- `setTypeParam` — set generic type parameter
+- `setArrayPortTypes` — set dynamic array port types
 
-- `search_graph_patterns`
-- `check_port_compatibility`
-- `suggest_adapter_nodes`
+## Validation Feedback Loop
+
+```text
+validate_graph_plan(plan)
+-> inspect errors and warnings
+-> repair plan (adjust operations, fix ports, add missing nodes)
+-> validate_graph_plan again
+-> satisfy governance requirements
+-> apply_graph_plan
+```
 
 ## Standard Workflow
 
 ```text
-get_current_project_context
+get_current_project_context (verify active session)
 -> resolve/search catalog if needed
--> instantiate_graph_pattern or build plan
+-> instantiate_graph_pattern or build operation plan
 -> validate_graph_plan
--> satisfy governance requirements
+-> satisfy governance requirements (snapshot, confirmation)
 -> apply_graph_plan
 ```
 
 ## Anti-Patterns
 
-Do not apply before validation, mutate without active session, bypass governance, replace the graph for small changes, or ignore validation warnings.
+- Applying before validation
+- Mutating without an active session
+- Using `replace_graph` for small changes
+- Bypassing governance for high-risk operations
+- Ignoring validation warnings
+- Connecting ports without checking compatibility
+
+## Load Next Skill
+
+- **Governance**: load `xtrader-mcp-agent-ready-governance` before apply.
+- **Catalog**: load `xtrader-mcp-agent-ready-catalog` to find nodes and check ports first.
+- **Session**: load `xtrader-mcp-agent-ready-session` first if no active session.
+- **Direct fallback**: load `xtrader-mcp-direct-fallback` only if AgentReady graph plan tools are insufficient.
