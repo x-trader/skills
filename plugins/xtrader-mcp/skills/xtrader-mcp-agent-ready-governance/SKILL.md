@@ -37,8 +37,8 @@ Load this skill before any write or risky operation.
 | High risk (graph mutation, delete, replace) | Require plan, snapshot, confirmation |
 | Tool is `destructive` | Require confirmation, notify user of impact |
 | Critical risk | Deny unless admin or explicit live-protected policy permits |
-| Policy requires snapshot | Call `create_graph_snapshot` before mutation |
-| Policy requires confirmation | Present changes, wait for `confirm_action` |
+| Policy requires snapshot | Create or reference a snapshot through the available workflow; use Direct fallback only if AgentReady lacks the needed action |
+| Policy requires confirmation | Present changes and obtain explicit confirmation; use Direct fallback only if an MCP confirmation tool is required |
 
 ## Core Rules
 
@@ -47,8 +47,10 @@ Load this skill before any write or risky operation.
 3. Respect project mode — Design allows more freedom than LiveProtected.
 4. Require `validate_graph_plan` before `apply_graph_plan`.
 5. Require confirmation for destructive, live, or protected changes.
-6. Never silently apply high-risk changes.
-7. Prefer AgentReady governed tools over Direct MCP direct mutation.
+6. If snapshot or confirmation requires a Direct-only tool, load Direct fallback and explain why.
+7. Never silently apply high-risk changes.
+8. Prefer AgentReady governed tools over Direct MCP direct mutation.
+9. Treat type update/delete, node deletion, node data mutation, and generic/array port mutation as governance-sensitive.
 
 ## Standard Workflow
 
@@ -57,8 +59,9 @@ describe_mcp_tooling
 -> classify operation risk from manifest
 -> check project mode (Design / LiveProtected)
 -> validate plan if graph-related
--> create snapshot if policy requires
--> require confirmation if policy requires
+-> satisfy snapshot requirement if policy requires
+-> obtain confirmation if policy requires
+-> use Direct fallback only for missing snapshot/confirmation tooling
 -> apply only if all governance checks pass
 -> summarize governance result
 ```
@@ -70,9 +73,12 @@ describe_mcp_tooling
 - Using Direct MCP write tools when AgentReady governed tools exist
 - Hiding risk from the user
 - Silently applying high-risk changes
+- Updating/deleting types without usage and impact analysis
+- Mutating node data or generic params without validation
 
 ## Load Next Skill
 
 - **Session**: load `xtrader-mcp-agent-ready-session` first if no active session.
 - **Graph plan**: load `xtrader-mcp-agent-ready-graph-plan` for plan creation and validation.
+- **Type/node data**: load `xtrader-mcp-type-node-data` before type mutation, node data mutation, generic params, or array port changes.
 - **Direct fallback**: load `xtrader-mcp-direct-fallback` only when AgentReady v1 lacks the required capability.

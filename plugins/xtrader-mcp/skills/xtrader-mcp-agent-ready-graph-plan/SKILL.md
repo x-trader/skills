@@ -11,7 +11,7 @@ Load this skill for graph creation, editing, repair, and mutation workflows.
 
 - `instantiate_graph_pattern` — create a plan from a known graph pattern (Medium risk)
 - `validate_graph_plan` — validate plan preconditions without mutating (Low risk)
-- `apply_graph_plan` — apply validated plan (High risk, requires confirmation/snapshot)
+- `apply_graph_plan` — apply validated plan (High risk; may require confirmation/snapshot by policy)
 
 ## Core Rules
 
@@ -20,8 +20,9 @@ Load this skill for graph creation, editing, repair, and mutation workflows.
 3. Do not use graph replacement as default strategy.
 4. Do not connect ports without a compatibility check from catalog skill.
 5. Explain changes as operations — add node, connect ports, set value, etc.
-6. For risky changes, load governance skill and satisfy snapshot/confirmation requirements.
+6. For risky changes, load governance skill and satisfy snapshot/confirmation requirements; use Direct fallback only if AgentReady lacks the required action.
 7. Use `instantiate_graph_pattern` when a known pattern fits the task.
+8. Load `xtrader-mcp-type-node-data` before setting form data, input values, generic type params, or array port types.
 
 ## Operation Vocabulary
 
@@ -35,6 +36,13 @@ When building or describing plans, use these operation types:
 - `setInputPortValue` — set default value for an input port
 - `setTypeParam` — set generic type parameter
 - `setArrayPortTypes` — set dynamic array port types
+
+## Node Data Rules
+
+- Do not set form data fields unless they are returned by catalog, graph plan validation, or Direct `get_node_details` fallback.
+- Do not set input values without checking expected port type.
+- Do not set generic type params unless the node schema exposes the parameter names.
+- Do not set array port types without validating array element compatibility.
 
 ## Validation Feedback Loop
 
@@ -54,7 +62,7 @@ get_current_project_context (verify active session)
 -> resolve/search catalog if needed
 -> instantiate_graph_pattern or build operation plan
 -> validate_graph_plan
--> satisfy governance requirements (snapshot, confirmation)
+-> satisfy governance requirements (snapshot, confirmation; Direct fallback only if required)
 -> apply_graph_plan
 ```
 
@@ -66,10 +74,12 @@ get_current_project_context (verify active session)
 - Bypassing governance for high-risk operations
 - Ignoring validation warnings
 - Connecting ports without checking compatibility
+- Setting node form data or generic params without loading type/node data guidance
 
 ## Load Next Skill
 
 - **Governance**: load `xtrader-mcp-agent-ready-governance` before apply.
+- **Type/node data**: load `xtrader-mcp-type-node-data` before node data, form data, input value, type param, or array port operations.
 - **Catalog**: load `xtrader-mcp-agent-ready-catalog` to find nodes and check ports first.
 - **Session**: load `xtrader-mcp-agent-ready-session` first if no active session.
 - **Direct fallback**: load `xtrader-mcp-direct-fallback` only if AgentReady graph plan tools are insufficient.

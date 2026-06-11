@@ -18,6 +18,7 @@ Primary capabilities:
 - bootstrap context
 - tool manifest
 - semantic catalog
+- type and node data guidance
 - graph pattern search
 - graph plan validation/apply
 - governance metadata
@@ -37,6 +38,7 @@ Direct MCP has broader tool coverage but more direct mutation tools and weaker s
 ```text
 skills/xtrader-mcp-agent-ready-session
 skills/xtrader-mcp-agent-ready-catalog
+skills/xtrader-mcp-type-node-data
 skills/xtrader-mcp-agent-ready-graph-plan
 skills/xtrader-mcp-agent-ready-governance
 skills/xtrader-mcp-direct-fallback

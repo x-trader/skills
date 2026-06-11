@@ -19,8 +19,8 @@
 8. If errors found: repair plan and re-validate.
 9. Load governance and satisfy requirements:
    - Check project mode
-   - Create snapshot if policy requires
-   - Request confirmation if policy requires
+   - If snapshot tooling is required and not available on AgentReady, load Direct fallback and explain why
+   - If MCP confirmation tooling is required and not available on AgentReady, load Direct fallback and explain why
 10. Call `apply_graph_plan(planId)`.
 11. Verify changes with `get_current_project_context`.
 
@@ -29,8 +29,8 @@
 ```
 validate_graph_plan -> valid=true, warnings=[], planId=plan-123
 describe_mcp_tooling -> risk=High, requiresConfirmation=true, requiresSnapshot=true
-create_graph_snapshot -> snapshot=snap-456
-[user confirms] -> confirmed=true
+[fallback if required] create_graph_snapshot -> snapshot=snap-456
+[user confirms or fallback if required] confirm_action -> confirmed=true
 apply_graph_plan(plan-123) -> applied=true, changes=[added SmaAlert, connected to NotificationSender]
 ```
 
@@ -39,4 +39,5 @@ apply_graph_plan(plan-123) -> applied=true, changes=[added SmaAlert, connected t
 - [ ] Validation called before apply.
 - [ ] No `replace_graph` used for a small change.
 - [ ] Governance requirements satisfied before apply.
+- [ ] Direct-only snapshot/confirmation tools used only through explicit Direct fallback.
 - [ ] Changes explained as operations, not raw graph dump.

@@ -5,6 +5,7 @@
 - MCP-only instruction skills
 - AgentReady-first design
 - Direct fallback guidance
+- Type/node data guidance
 
 ## v0.2.0
 

@@ -54,5 +54,6 @@ open_project_session or get_agent_bootstrap_context
 
 - **Governance**: load `xtrader-mcp-agent-ready-governance` before any write or risky operation.
 - **Catalog**: load `xtrader-mcp-agent-ready-catalog` when searching nodes, types, or patterns.
+- **Type/node data**: load `xtrader-mcp-type-node-data` when full type details, node schema, form data, generic params, or array port types are involved.
 - **Graph plan**: load `xtrader-mcp-agent-ready-graph-plan` when creating or editing graphs.
 - **Direct fallback**: load `xtrader-mcp-direct-fallback` only when AgentReady v1 lacks the required capability.

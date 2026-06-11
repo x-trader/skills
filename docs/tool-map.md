@@ -18,7 +18,7 @@
 | `validate_graph_plan` | graph | Low | Yes | Yes |
 | `apply_graph_plan` | graph | High | No | Yes |
 
-## Direct MCP Tool Categories (104 tools — fallback endpoint `/mcp`)
+## Direct MCP Tool Categories (92 tools — fallback endpoint `/mcp`)
 
 ### Project Context (4 tools)
 
@@ -46,7 +46,7 @@
 | `create_folder` | Low |
 | `get_folder_by_path` | Low |
 
-### Package (18 tools)
+### Package (17 tools)
 
 | Tool | Risk |
 |---|---|
@@ -68,7 +68,7 @@
 | `get_dependency_updates` | Low |
 | `update_all_dependencies` | High |
 
-### Type (16 tools)
+### Type (15 tools)
 
 | Tool | Risk |
 |---|---|

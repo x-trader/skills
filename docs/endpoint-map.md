@@ -2,7 +2,7 @@
 
 | Route | Surface | Default? | Authorization | Tool Availability |
 |---|---|---|---|---|
-| `/mcp` | Direct MCP | No | Required | 104 Direct MCP tools |
+| `/mcp` | Direct MCP | No | Required | 92 Direct MCP tools |
 | `/mcp/agent-ready/v1` | AgentReady MCP v1 | Yes | Required | 13 AgentReady tools |
 
 ## Rules

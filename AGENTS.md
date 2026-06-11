@@ -21,5 +21,6 @@ Recommended skill activation order:
 1. `xtrader-mcp-agent-ready-session`
 2. `xtrader-mcp-agent-ready-governance`
 3. `xtrader-mcp-agent-ready-catalog`
-4. `xtrader-mcp-agent-ready-graph-plan`
-5. `xtrader-mcp-direct-fallback` only when needed
+4. `xtrader-mcp-type-node-data` when type details, node schema, form data, or generic params are involved
+5. `xtrader-mcp-agent-ready-graph-plan`
+6. `xtrader-mcp-direct-fallback` only when needed

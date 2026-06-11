@@ -21,6 +21,8 @@ Load this skill only as a fallback.
 | Package/dependency mutation | Yes, carefully | AgentReady v1 lacks package mutation tools |
 | Type mutation (create/update/delete) | Yes, carefully | AgentReady v1 lacks type mutation tools |
 | Node mutation (create/delete) | Yes, carefully | AgentReady v1 lacks node mutation tools |
+| Full type details or node schema | Yes, carefully | AgentReady v1 may expose only catalog summaries |
+| Node form data, input values, generic params, array port types | Yes, carefully | Use Direct MCP only if AgentReady graph plans cannot express the operation |
 | Raw graph read (`get_graph`) | Maybe | AgentReady v1 lacks raw graph read |
 | Graph mutation | Avoid if possible | Prefer AgentReady graph plan tools first |
 | `replace_graph` / `restore_graph_snapshot` | Only with explicit governance | High risk |
@@ -32,8 +34,8 @@ Load this skill only as a fallback.
 | Project context | 4 tools | Low |
 | Version | 4 tools | Low/Medium |
 | Folder | 3 tools | Low |
-| Package | 18 tools | Low/Medium/High |
-| Type | 16 tools | Low/Medium/High |
+| Package | 17 tools | Low/Medium/High |
+| Type | 15 tools | Low/Medium/High |
 | Node | 7 tools | Medium/High |
 | Graph | 16 tools | Low/Medium/High |
 | Backtest | 23 tools | Low/Medium |
@@ -51,6 +53,7 @@ See `docs/tool-map.md` for the full Direct MCP tool list.
 6. Connect via `connect_project` when starting a Direct MCP session.
 7. For Direct MCP writes, require plan, validation, snapshot, and confirmation when available.
 8. Return to AgentReady MCP v1 workflow after the fallback task completes.
+9. For type/node detail or mutation, load `xtrader-mcp-type-node-data` before choosing Direct tools.
 
 ## Required Fallback Workflow
 
@@ -83,8 +86,10 @@ AgentReady attempt -> identify missing capability
 - Ignoring Direct MCP context isolation limitations
 - Falling back to Direct MCP for every operation
 - Calling Direct MCP deprecated — it is not deprecated, it is not the default
+- Using Direct type/node tools without type/node data guidance
 
 ## Load Next Skill
 
 - **Session**: reload `xtrader-mcp-agent-ready-session` after fallback to refresh context.
 - **Governance**: load `xtrader-mcp-agent-ready-governance` before Direct MCP writes.
+- **Type/node data**: load `xtrader-mcp-type-node-data` before Direct type/node detail or mutation tools.

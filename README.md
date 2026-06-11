@@ -28,6 +28,7 @@ plugins/xtrader-mcp
 
 - `xtrader-mcp-agent-ready-session`
 - `xtrader-mcp-agent-ready-catalog`
+- `xtrader-mcp-type-node-data`
 - `xtrader-mcp-agent-ready-graph-plan`
 - `xtrader-mcp-agent-ready-governance`
 - `xtrader-mcp-direct-fallback`
