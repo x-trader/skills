@@ -3,7 +3,7 @@
   "plugins": [
     {
       "name": "xtrader-mcp",
-      "path": "../../plugins/xtrader-mcp",
+      "source": "../../plugins/xtrader-mcp",
       "description": "Agent skills for XTrader MCP AgentReady, types, nodes, visual graphs, backtests, and direct fallback workflows."
     }
   ]
