@@ -56,6 +56,7 @@ open_project_session or get_agent_bootstrap_context
 - **Catalog**: load `xtrader-catalog` when searching nodes, types, or patterns.
 - **Types**: load `xtrader-types` when type details, compatibility, object/enum types, or type mutation are involved.
 - **Nodes**: load `xtrader-nodes` when node schema, form data, generic params, or array port types are involved.
+- **Visual graphs**: load `xtrader-visual-graphs` when VisualNode, FlowGraph, nested visual nodes, public port nodes, or port kinds are involved.
 - **Graph plan**: load `xtrader-graph-plan` when creating or editing graphs.
 - **Backtests**: load `xtrader-backtests` when the user asks to run, inspect, debug, or summarize backtests.
 - **Direct**: load `xtrader-direct` only when AgentReady v1 lacks the required capability.

@@ -7,6 +7,7 @@
 - Direct fallback guidance
 - Type guidance
 - Node data guidance
+- Visual graph guidance
 
 ## v0.2.0
 

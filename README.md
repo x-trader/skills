@@ -30,6 +30,7 @@ plugins/xtrader-mcp
 - `xtrader-catalog`
 - `xtrader-types`
 - `xtrader-nodes`
+- `xtrader-visual-graphs`
 - `xtrader-graph-plan`
 - `xtrader-governance`
 - `xtrader-backtests`
@@ -43,4 +44,5 @@ plugins/xtrader-mcp
 - Never dump the full catalog into prompt context.
 - Never dump full backtest logs, drawings, or positions into prompt context.
 - Never guess node codes.
+- Never invent visual-node public ports outside official `XTrader.Nodes.Core.IO.*` port nodes.
 - Prefer plans, validation, governance, and controlled apply flows.

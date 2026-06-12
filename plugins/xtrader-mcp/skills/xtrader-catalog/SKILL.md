@@ -98,5 +98,6 @@ resolve_intent_concepts
 - **Graph plan**: load `xtrader-graph-plan` after node/port selection.
 - **Types**: load `xtrader-types` for full type details, compatibility, object/enum types, or type mutation.
 - **Nodes**: load `xtrader-nodes` for full node schema, form data, generic params, or array port types.
+- **Visual graphs**: load `xtrader-visual-graphs` for VisualNode composition, public port nodes, FlowGraph shape, or port-kind reasoning.
 - **Governance**: load `xtrader-governance` before any apply.
 - **Session**: load `xtrader-session` first if no active session.

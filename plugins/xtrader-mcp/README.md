@@ -20,6 +20,7 @@ Primary capabilities:
 - semantic catalog
 - type guidance
 - node data guidance
+- visual node and FlowGraph guidance
 - graph pattern search
 - graph plan validation/apply
 - backtest result analysis through Direct MCP fallback
@@ -42,6 +43,7 @@ skills/xtrader-session
 skills/xtrader-catalog
 skills/xtrader-types
 skills/xtrader-nodes
+skills/xtrader-visual-graphs
 skills/xtrader-graph-plan
 skills/xtrader-governance
 skills/xtrader-backtests

@@ -81,6 +81,7 @@ get_current_project_context (verify active session)
 - **Governance**: load `xtrader-governance` before apply.
 - **Nodes**: load `xtrader-nodes` before node data, form data, input value, type param, or array port operations.
 - **Types**: load `xtrader-types` when graph operations require type details or type mutation.
+- **Visual graphs**: load `xtrader-visual-graphs` when graph operations involve VisualNode structure, public port nodes, nested visual nodes, or port kinds.
 - **Catalog**: load `xtrader-catalog` to find nodes and check ports first.
 - **Session**: load `xtrader-session` first if no active session.
 - **Direct**: load `xtrader-direct` only if AgentReady graph plan tools are insufficient.

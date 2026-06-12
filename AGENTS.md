@@ -23,6 +23,7 @@ Recommended skill activation order:
 3. `xtrader-catalog`
 4. `xtrader-types` when type details, object/enum types, compatibility, or type mutation are involved
 5. `xtrader-nodes` when node schema, form data, input values, generic params, or array port types are involved
-6. `xtrader-graph-plan`
-7. `xtrader-backtests` for backtest execution or result analysis
-8. `xtrader-direct` only when needed
+6. `xtrader-visual-graphs` when VisualNode, FlowGraph, nested visual nodes, public port nodes, or port kinds are involved
+7. `xtrader-graph-plan`
+8. `xtrader-backtests` for backtest execution or result analysis
+9. `xtrader-direct` only when needed

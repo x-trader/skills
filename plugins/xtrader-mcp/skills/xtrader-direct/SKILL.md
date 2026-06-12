@@ -23,6 +23,7 @@ Load this skill only as a fallback.
 | Node mutation (create/delete) | Yes, carefully | AgentReady v1 lacks node mutation tools |
 | Full type details or node schema | Yes, carefully | AgentReady v1 may expose only catalog summaries |
 | Node form data, input values, generic params, array port types | Yes, carefully | Use Direct MCP only if AgentReady graph plans cannot express the operation |
+| Visual node create/list/detail/raw graph read | Yes, carefully | AgentReady v1 may lack project visual-node and raw graph tools |
 | Raw graph read (`get_graph`) | Maybe | AgentReady v1 lacks raw graph read |
 | Graph mutation | Avoid if possible | Prefer AgentReady graph plan tools first |
 | `replace_graph` / `restore_graph_snapshot` | Only with explicit governance | High risk |
@@ -55,7 +56,8 @@ See `docs/tool-map.md` for the full Direct MCP tool list.
 8. Return to AgentReady MCP v1 workflow after the fallback task completes.
 9. For type detail or mutation, load `xtrader-types` before choosing Direct type tools.
 10. For node detail or mutation, load `xtrader-nodes` before choosing Direct node tools.
-11. For backtest execution or result analysis, load `xtrader-backtests` before choosing Direct backtest tools.
+11. For visual-node creation, raw graph reads, or VisualNode/FlowGraph fallback, load `xtrader-visual-graphs` before choosing Direct visual-node or graph tools.
+12. For backtest execution or result analysis, load `xtrader-backtests` before choosing Direct backtest tools.
 
 ## Required Fallback Workflow
 
@@ -90,6 +92,7 @@ AgentReady attempt -> identify missing capability
 - Calling Direct MCP deprecated — it is not deprecated, it is not the default
 - Using Direct type tools without type guidance
 - Using Direct node tools without node guidance
+- Using Direct visual-node or graph tools without visual graph guidance
 - Using Direct backtest tools without backtest guidance
 
 ## Load Next Skill
@@ -98,4 +101,5 @@ AgentReady attempt -> identify missing capability
 - **Governance**: load `xtrader-governance` before Direct MCP writes.
 - **Types**: load `xtrader-types` before Direct type detail or mutation tools.
 - **Nodes**: load `xtrader-nodes` before Direct node detail or mutation tools.
+- **Visual graphs**: load `xtrader-visual-graphs` before Direct visual-node or graph fallback tools.
 - **Backtests**: load `xtrader-backtests` before Direct backtest tools.

@@ -3,9 +3,10 @@
 ## v0.1.0
 
 - Initial release of XTrader MCP skills pack
-- Eight MCP-only agent skills: session, catalog, types, nodes, graph-plan, governance, backtests, direct
+- Nine MCP-only agent skills: session, catalog, types, nodes, visual-graphs, graph-plan, governance, backtests, direct
 - Added type guidance for object types, enum types, compatibility, usage, impact, and mutation
 - Added node guidance for node schemas, form data, generic params, and array port types
+- Added visual graph guidance for VisualNode composition, FlowGraph shape, public port nodes, and value/signal/flow/array/group port kinds
 - Added backtest result guidance for Direct MCP backtest execution, summaries, issues, symbols, positions, and logs
 - AgentReady MCP v1 as default endpoint
 - Direct MCP as controlled fallback
