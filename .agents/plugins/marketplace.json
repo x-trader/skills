@@ -1,4 +1,11 @@
 {
+  "name": "xtrader-skills",
+  "owner": {
+    "name": "X-Trader"
+  },
+  "interface": {
+    "displayName": "X-Trader Skills"
+  },
   "schemaVersion": "0.1",
   "plugins": [
     {
