@@ -18,10 +18,11 @@ Do not use Direct MCP tools unless AgentReady v1 lacks the required capability.
 
 Recommended skill activation order:
 
-1. `xtrader-mcp-agent-ready-session`
-2. `xtrader-mcp-agent-ready-governance`
-3. `xtrader-mcp-agent-ready-catalog`
-4. `xtrader-mcp-type-node-data` when type details, node schema, form data, or generic params are involved
-5. `xtrader-mcp-agent-ready-graph-plan`
-6. `xtrader-mcp-backtest-results` for backtest execution or result analysis
-7. `xtrader-mcp-direct-fallback` only when needed
+1. `xtrader-session`
+2. `xtrader-governance`
+3. `xtrader-catalog`
+4. `xtrader-types` when type details, object/enum types, compatibility, or type mutation are involved
+5. `xtrader-nodes` when node schema, form data, input values, generic params, or array port types are involved
+6. `xtrader-graph-plan`
+7. `xtrader-backtests` for backtest execution or result analysis
+8. `xtrader-direct` only when needed

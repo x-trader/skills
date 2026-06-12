@@ -1,6 +1,6 @@
 # Eval: Backtest Results
 
-**Skills under test**: `xtrader-mcp-agent-ready-session`, `xtrader-mcp-backtest-results`, `xtrader-mcp-direct-fallback`
+**Skills under test**: `xtrader-session`, `xtrader-backtests`, `xtrader-direct`
 
 ## Scenario
 
@@ -9,7 +9,7 @@ User asks: "Run a backtest on my current project and tell me why the worst symbo
 ## Expected Agent Behavior
 
 1. Starts from AgentReady session context.
-2. Loads `xtrader-mcp-backtest-results`.
+2. Loads `xtrader-backtests`.
 3. Explains Direct MCP fallback because AgentReady v1 lacks backtest tools.
 4. Calls `connect_project` on `/mcp`.
 5. Calls `create_backtest`, then `wait_backtest`.
@@ -23,7 +23,7 @@ User asks: "Run a backtest on my current project and tell me why the worst symbo
 
 | Criteria | Pass | Fail |
 |---|---|---|
-| Skill activation | Loads backtest-results skill | Uses only direct-fallback skill |
+| Skill activation | Loads `xtrader-backtests` | Uses only `xtrader-direct` |
 | Fallback explanation | Explains AgentReady lacks backtest tools | Uses `/mcp` silently |
 | Lifecycle | Creates and waits/polls backtest | Creates but does not wait/poll |
 | Summary first | Uses overview/snapshot/issues/summary before drilldown | Starts with full logs or all positions |

@@ -2,7 +2,7 @@
 
 **Endpoint**: `/mcp` through controlled Direct fallback.
 
-**Skills**: `xtrader-mcp-backtest-results`, `xtrader-mcp-direct-fallback`
+**Skills**: `xtrader-backtests`, `xtrader-direct`
 
 ## Sequence
 

@@ -1,9 +1,9 @@
 ---
-name: xtrader-mcp-direct-fallback
-description: Provides controlled fallback to Direct MCP (/mcp) when XTrader AgentReady MCP v1 lacks the required capability. Covers tool categories, fallback decision rules, context isolation warnings, and return-to-AgentReady workflow. Use only when AgentReady v1 does not expose the required tool.
+name: xtrader-direct
+description: Use this skill only when XTrader AgentReady MCP v1 lacks the required capability and controlled Direct MCP (/mcp) fallback is needed. Covers fallback decision rules, tool categories, context isolation warnings, and return-to-AgentReady workflow.
 ---
 
-# XTrader MCP Direct Fallback Skill
+# XTrader Direct Skill
 
 Load this skill only as a fallback.
 
@@ -53,8 +53,9 @@ See `docs/tool-map.md` for the full Direct MCP tool list.
 6. Connect via `connect_project` when starting a Direct MCP session.
 7. For Direct MCP writes, require plan, validation, snapshot, and confirmation when available.
 8. Return to AgentReady MCP v1 workflow after the fallback task completes.
-9. For type/node detail or mutation, load `xtrader-mcp-type-node-data` before choosing Direct tools.
-10. For backtest execution or result analysis, load `xtrader-mcp-backtest-results` before choosing Direct backtest tools.
+9. For type detail or mutation, load `xtrader-types` before choosing Direct type tools.
+10. For node detail or mutation, load `xtrader-nodes` before choosing Direct node tools.
+11. For backtest execution or result analysis, load `xtrader-backtests` before choosing Direct backtest tools.
 
 ## Required Fallback Workflow
 
@@ -87,12 +88,14 @@ AgentReady attempt -> identify missing capability
 - Ignoring Direct MCP context isolation limitations
 - Falling back to Direct MCP for every operation
 - Calling Direct MCP deprecated — it is not deprecated, it is not the default
-- Using Direct type/node tools without type/node data guidance
-- Using Direct backtest tools without backtest-results guidance
+- Using Direct type tools without type guidance
+- Using Direct node tools without node guidance
+- Using Direct backtest tools without backtest guidance
 
 ## Load Next Skill
 
-- **Session**: reload `xtrader-mcp-agent-ready-session` after fallback to refresh context.
-- **Governance**: load `xtrader-mcp-agent-ready-governance` before Direct MCP writes.
-- **Type/node data**: load `xtrader-mcp-type-node-data` before Direct type/node detail or mutation tools.
-- **Backtest results**: load `xtrader-mcp-backtest-results` before Direct backtest tools.
+- **Session**: reload `xtrader-session` after fallback to refresh context.
+- **Governance**: load `xtrader-governance` before Direct MCP writes.
+- **Types**: load `xtrader-types` before Direct type detail or mutation tools.
+- **Nodes**: load `xtrader-nodes` before Direct node detail or mutation tools.
+- **Backtests**: load `xtrader-backtests` before Direct backtest tools.

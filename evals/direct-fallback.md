@@ -1,6 +1,6 @@
 # Eval: Direct MCP Fallback
 
-**Skills under test**: `xtrader-mcp-agent-ready-session`, `xtrader-mcp-direct-fallback`
+**Skills under test**: `xtrader-session`, `xtrader-direct`
 
 ## Scenario
 
@@ -27,7 +27,7 @@ Note: AgentReady MCP v1 currently lacks backtest tools.
 | Tool selection | Uses smallest required tool | Uses broad or unnecessary Direct tools |
 | Context isolation | Returns to AgentReady after fallback | Stays on Direct MCP |
 | Not deprecated | Never calls Direct MCP deprecated | Calls Direct MCP deprecated |
-| Skill activation | Loads `xtrader-mcp-direct-fallback` | Falls back without loading the skill |
+| Skill activation | Loads `xtrader-direct` | Falls back without loading the skill |
 
 ## Negative Cases
 

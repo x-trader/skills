@@ -2,7 +2,7 @@
 
 ## AgentReady MCP v1 — Missing Capabilities
 
-- **Backtest/execution tools**: AgentReady v1 currently has no backtest or execution tools. These are only available through Direct MCP (`/mcp`); use `xtrader-mcp-backtest-results` for these workflows.
+- **Backtest/execution tools**: AgentReady v1 currently has no backtest or execution tools. These are only available through Direct MCP (`/mcp`); use `xtrader-backtests` for these workflows.
 - **Package/dependency mutation tools**: `add_project_package_dependency`, `remove_project_package_dependency`, `update_all_dependencies`, etc. are Direct MCP only.
 - **Type/node mutation tools**: `create_object_type`, `delete_type`, `create_visual_node`, `delete_visual_node`, etc. are Direct MCP only.
 - **Full type/node details**: `get_type_details`, `get_type_form_schema`, and `get_node_details` are Direct MCP only.

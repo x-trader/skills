@@ -1,9 +1,9 @@
 ---
-name: xtrader-mcp-backtest-results
-description: Guides agents through XTrader MCP backtest creation, polling, result summaries, issues, logs, symbols, positions, drawings, and focused result drilldowns. Use when a user asks to run, inspect, compare, debug, or summarize backtests or backtest results; requires Direct MCP fallback because AgentReady MCP v1 does not expose backtest tools.
+name: xtrader-backtests
+description: Use this skill when a user asks to run, inspect, compare, debug, or summarize XTrader backtests or backtest results. Guides creation, polling, result summaries, issues, logs, symbols, positions, drawings, and focused drilldowns through Direct MCP fallback.
 ---
 
-# XTrader MCP Backtest Results Skill
+# XTrader Backtests Skill
 
 Load this skill for backtest execution or result analysis.
 
@@ -90,6 +90,6 @@ get_current_project_context on AgentReady
 
 ## Load Next Skill
 
-- **Session**: load `xtrader-mcp-agent-ready-session` before and after Direct fallback.
-- **Direct fallback**: load `xtrader-mcp-direct-fallback` before using `/mcp` backtest tools.
-- **Governance**: load `xtrader-mcp-agent-ready-governance` if a backtest request includes any write or live/protected concern beyond result inspection.
+- **Session**: load `xtrader-session` before and after Direct fallback.
+- **Direct**: load `xtrader-direct` before using `/mcp` backtest tools.
+- **Governance**: load `xtrader-governance` if a backtest request includes any write or live/protected concern beyond result inspection.

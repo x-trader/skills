@@ -2,7 +2,7 @@
 
 **Endpoint**: start with `/mcp/agent-ready/v1`; use `/mcp` only if full node schema or Direct node-data mutation is required.
 
-**Skills**: `xtrader-mcp-agent-ready-session`, `xtrader-mcp-agent-ready-catalog`, `xtrader-mcp-type-node-data`, `xtrader-mcp-agent-ready-graph-plan`, `xtrader-mcp-agent-ready-governance`, `xtrader-mcp-direct-fallback`
+**Skills**: `xtrader-session`, `xtrader-catalog`, `xtrader-nodes`, `xtrader-graph-plan`, `xtrader-governance`, `xtrader-direct`
 
 ## Sequence
 

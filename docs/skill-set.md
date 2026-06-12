@@ -1,17 +1,14 @@
 # XTrader MCP Skill Set
 
-The first skill set contains seven MCP-only skills:
+The first skill set contains eight MCP-only skills:
 
-1. `xtrader-mcp-agent-ready-session`
-2. `xtrader-mcp-agent-ready-catalog`
-3. `xtrader-mcp-type-node-data`
-4. `xtrader-mcp-agent-ready-graph-plan`
-5. `xtrader-mcp-agent-ready-governance`
-6. `xtrader-mcp-backtest-results`
-7. `xtrader-mcp-direct-fallback`
-
-Future skill if AgentReady execution tools exist:
-
-- `xtrader-mcp-agent-ready-execution`
+1. `xtrader-session`
+2. `xtrader-catalog`
+3. `xtrader-types`
+4. `xtrader-nodes`
+5. `xtrader-graph-plan`
+6. `xtrader-governance`
+7. `xtrader-backtests`
+8. `xtrader-direct`
 
 Scope: these skills guide agents that use XTrader MCP tools. They are not for non-MCP workflows.

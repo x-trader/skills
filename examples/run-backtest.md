@@ -2,7 +2,7 @@
 
 **Endpoint**: start with `/mcp/agent-ready/v1`; use `/mcp` because backtest tools are Direct MCP-only.
 
-**Skills**: `xtrader-mcp-agent-ready-session`, `xtrader-mcp-backtest-results`, `xtrader-mcp-direct-fallback`
+**Skills**: `xtrader-session`, `xtrader-backtests`, `xtrader-direct`
 
 ## Sequence
 

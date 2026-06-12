@@ -25,7 +25,7 @@ Do not assume inheritance/base-type behavior. Follow it only when MCP metadata e
 
 Every public .NET BCL type (class, struct, interface, enum) from the SDK reference assemblies is extracted as nodes. Each assembly becomes a package (`System.Runtime`, `System.Collections`, `System.Linq`, etc.). Node display names follow structured naming conventions derived from .NET member names.
 
-See the [dotnet-runtime-nodes reference](plugins/xtrader-mcp/skills/xtrader-mcp-type-node-data/references/dotnet-runtime-nodes.md) for the full naming table, package list, and exclusion rules.
+See the [dotnet-runtime-nodes reference](plugins/xtrader-mcp/skills/xtrader-nodes/references/dotnet-runtime-nodes.md) for the full naming table, package list, and exclusion rules.
 
 ## Node Data
 

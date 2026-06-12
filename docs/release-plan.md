@@ -5,7 +5,8 @@
 - MCP-only instruction skills
 - AgentReady-first design
 - Direct fallback guidance
-- Type/node data guidance
+- Type guidance
+- Node data guidance
 
 ## v0.2.0
 
@@ -15,4 +16,4 @@
 
 ## v0.3.0
 
-- Add AgentReady execution skill if execution tools exist
+- Expand execution guidance if AgentReady execution tools become available

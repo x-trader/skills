@@ -1,9 +1,9 @@
 ---
-name: xtrader-mcp-agent-ready-catalog
-description: Searches the XTrader AgentReady semantic catalog to resolve user intent into concepts, find matching nodes and patterns, check port compatibility, and suggest adapter nodes. Use when selecting or understanding nodes, types, ports, packages, or graph patterns through AgentReady MCP.
+name: xtrader-catalog
+description: Use this skill when selecting or understanding XTrader nodes, types, ports, packages, graph patterns, or adapters. Searches the AgentReady semantic catalog, resolves user intent into concepts, finds matching nodes/patterns, and checks port compatibility.
 ---
 
-# XTrader MCP AgentReady Catalog Skill
+# XTrader Catalog Skill
 
 Load this skill when the task requires finding or evaluating nodes, types, or graph patterns.
 
@@ -12,7 +12,7 @@ Load this skill when the task requires finding or evaluating nodes, types, or gr
 1. Never guess node codes or invent node names from memory.
 2. Never dump the full catalog into prompt context.
 3. Search project-scoped catalog first (`search_catalog`). Use installable/global search only when results are insufficient.
-4. Use catalog result details for selected candidates. If full node schema or full type details are required and AgentReady does not expose them, load `xtrader-mcp-type-node-data` and use Direct fallback only when needed.
+4. Use catalog result details for selected candidates. If full node schema is required, load `xtrader-nodes`; if full type details are required, load `xtrader-types`. Use Direct fallback only when needed.
 5. Check port compatibility (`check_port_compatibility`) before recommending graph connections.
 6. Suggest adapter nodes (`suggest_adapter_nodes`) when ports are incompatible.
 7. Prefer semantic concept workflows (`resolve_intent_concepts`, `suggest_nodes_for_intent`) for abstract user intent.
@@ -35,7 +35,7 @@ You have resolved concepts and need candidate nodes.
 ```
 search_catalog(query, scope: project)
 -> inspect candidate node summaries
--> load type/node data skill if full node schema, form data, or type params are needed
+-> load xtrader-nodes if full node schema, form data, or type params are needed
 -> check_port_compatibility(source_node, target_node, source_port, target_port)
 -> suggest_adapter_nodes if compatibility fails
 ```
@@ -95,7 +95,8 @@ resolve_intent_concepts
 
 ## Load Next Skill
 
-- **Graph plan**: load `xtrader-mcp-agent-ready-graph-plan` after node/port selection.
-- **Type/node data**: load `xtrader-mcp-type-node-data` for full node schema, type details, form data, generic params, or array port types.
-- **Governance**: load `xtrader-mcp-agent-ready-governance` before any apply.
-- **Session**: load `xtrader-mcp-agent-ready-session` first if no active session.
+- **Graph plan**: load `xtrader-graph-plan` after node/port selection.
+- **Types**: load `xtrader-types` for full type details, compatibility, object/enum types, or type mutation.
+- **Nodes**: load `xtrader-nodes` for full node schema, form data, generic params, or array port types.
+- **Governance**: load `xtrader-governance` before any apply.
+- **Session**: load `xtrader-session` first if no active session.

@@ -26,17 +26,14 @@ plugins/xtrader-mcp
 
 ## Skills
 
-- `xtrader-mcp-agent-ready-session`
-- `xtrader-mcp-agent-ready-catalog`
-- `xtrader-mcp-type-node-data`
-- `xtrader-mcp-agent-ready-graph-plan`
-- `xtrader-mcp-agent-ready-governance`
-- `xtrader-mcp-backtest-results`
-- `xtrader-mcp-direct-fallback`
-
-Future optional skill:
-
-- `xtrader-mcp-agent-ready-execution`
+- `xtrader-session`
+- `xtrader-catalog`
+- `xtrader-types`
+- `xtrader-nodes`
+- `xtrader-graph-plan`
+- `xtrader-governance`
+- `xtrader-backtests`
+- `xtrader-direct`
 
 ## Design Principles
 

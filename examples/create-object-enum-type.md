@@ -2,7 +2,7 @@
 
 **Endpoint**: `/mcp` through Direct fallback, because type creation is Direct MCP only.
 
-**Skills**: `xtrader-mcp-agent-ready-session`, `xtrader-mcp-type-node-data`, `xtrader-mcp-agent-ready-governance`, `xtrader-mcp-direct-fallback`
+**Skills**: `xtrader-session`, `xtrader-types`, `xtrader-governance`, `xtrader-direct`
 
 ## Object Type Sequence
 

@@ -2,7 +2,7 @@
 
 **Endpoint**: `/mcp/agent-ready/v1`
 
-**Skills**: `xtrader-mcp-agent-ready-session`, `xtrader-mcp-agent-ready-catalog`, `xtrader-mcp-agent-ready-graph-plan`, `xtrader-mcp-agent-ready-governance`
+**Skills**: `xtrader-session`, `xtrader-catalog`, `xtrader-graph-plan`, `xtrader-governance`
 
 ## Sequence
 

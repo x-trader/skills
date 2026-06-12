@@ -1,9 +1,9 @@
 ---
-name: xtrader-mcp-agent-ready-graph-plan
-description: Creates, validates, and applies operation-based graph plans through XTrader AgentReady MCP. Guides agents to use instantiate_graph_pattern for known patterns, validate before apply, satisfy governance requirements, and avoid direct graph replacement. Use when creating, editing, repairing, or applying graph changes through AgentReady MCP.
+name: xtrader-graph-plan
+description: Use this skill when creating, editing, repairing, validating, or applying XTrader graph changes through AgentReady MCP. Guides operation-based graph plans, known pattern instantiation, validate-before-apply, governance requirements, and avoiding direct graph replacement.
 ---
 
-# XTrader MCP AgentReady Graph Plan Skill
+# XTrader Graph Plan Skill
 
 Load this skill for graph creation, editing, repair, and mutation workflows.
 
@@ -22,7 +22,7 @@ Load this skill for graph creation, editing, repair, and mutation workflows.
 5. Explain changes as operations — add node, connect ports, set value, etc.
 6. For risky changes, load governance skill and satisfy snapshot/confirmation requirements; use Direct fallback only if AgentReady lacks the required action.
 7. Use `instantiate_graph_pattern` when a known pattern fits the task.
-8. Load `xtrader-mcp-type-node-data` before setting form data, input values, generic type params, or array port types.
+8. Load `xtrader-nodes` before setting form data, input values, generic type params, or array port types.
 
 ## Operation Vocabulary
 
@@ -74,12 +74,13 @@ get_current_project_context (verify active session)
 - Bypassing governance for high-risk operations
 - Ignoring validation warnings
 - Connecting ports without checking compatibility
-- Setting node form data or generic params without loading type/node data guidance
+- Setting node form data or generic params without loading node guidance
 
 ## Load Next Skill
 
-- **Governance**: load `xtrader-mcp-agent-ready-governance` before apply.
-- **Type/node data**: load `xtrader-mcp-type-node-data` before node data, form data, input value, type param, or array port operations.
-- **Catalog**: load `xtrader-mcp-agent-ready-catalog` to find nodes and check ports first.
-- **Session**: load `xtrader-mcp-agent-ready-session` first if no active session.
-- **Direct fallback**: load `xtrader-mcp-direct-fallback` only if AgentReady graph plan tools are insufficient.
+- **Governance**: load `xtrader-governance` before apply.
+- **Nodes**: load `xtrader-nodes` before node data, form data, input value, type param, or array port operations.
+- **Types**: load `xtrader-types` when graph operations require type details or type mutation.
+- **Catalog**: load `xtrader-catalog` to find nodes and check ports first.
+- **Session**: load `xtrader-session` first if no active session.
+- **Direct**: load `xtrader-direct` only if AgentReady graph plan tools are insufficient.

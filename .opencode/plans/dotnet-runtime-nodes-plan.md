@@ -6,7 +6,7 @@ The XTrader MCP metadata pipeline extracts the entire .NET BCL as nodes. Every p
 
 ## Changes
 
-### 1. New file: `plugins/xtrader-mcp/skills/xtrader-mcp-type-node-data/references/dotnet-runtime-nodes.md`
+### 1. New file: `plugins/xtrader-mcp/skills/xtrader-nodes/references/dotnet-runtime-nodes.md`
 
 Full reference covering:
 - Package grouping (each assembly = one package: System.Runtime, System.Collections, System.Linq, etc.)
@@ -26,11 +26,11 @@ Add a "## .NET Runtime Nodes" section after the "Type Kinds" section:
 Every public .NET BCL type (class, struct, interface, enum) from the SDK reference assemblies
 is extracted as nodes. Each assembly becomes a package (System.Runtime, System.Collections, etc.).
 Node display names follow structured naming conventions. See the
-[dotnet-runtime-nodes reference](plugins/xtrader-mcp/skills/xtrader-mcp-type-node-data/references/dotnet-runtime-nodes.md)
+[dotnet-runtime-nodes reference](plugins/xtrader-mcp/skills/xtrader-nodes/references/dotnet-runtime-nodes.md)
 for the full naming table, package list, and exclusion rules.
 ```
 
-### 3. Update: `plugins/xtrader-mcp/skills/xtrader-mcp-type-node-data/references/type-sources.md`
+### 3. Update: `plugins/xtrader-mcp/skills/xtrader-types/references/type-sources.md`
 
 Expand the "System" source row:
 
@@ -38,7 +38,7 @@ Expand the "System" source row:
 | System | Primitive/system type exposed by MCP metadata, including all .NET BCL types extracted from SDK reference assemblies | Treat as read-only. See the dotnet-runtime-nodes reference for naming conventions and package grouping. |
 ```
 
-### 4. Update: `plugins/xtrader-mcp/skills/xtrader-mcp-type-node-data/SKILL.md`
+### 4. Update: `plugins/xtrader-mcp/skills/xtrader-nodes/SKILL.md`
 
 Add a new section "## .NET Runtime Node Knowledge" before "## AgentReady-First Workflow":
 

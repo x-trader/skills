@@ -1,9 +1,9 @@
 ---
-name: xtrader-mcp-agent-ready-governance
-description: Enforces XTrader AgentReady governance rules by reading the tool manifest, respecting project mode, risk levels, confirmation, and snapshot requirements before write or risky operations. Use before graph-plan apply, dependency mutation, snapshot restore, destructive changes, or live/protected execution.
+name: xtrader-governance
+description: Use this skill before XTrader write or risky operations, including graph-plan apply, dependency mutation, type/node mutation, snapshot restore, destructive changes, or live/protected execution. Enforces project mode, risk levels, confirmation, snapshot, and validation requirements.
 ---
 
-# XTrader MCP AgentReady Governance Skill
+# XTrader Governance Skill
 
 Load this skill before any write or risky operation.
 
@@ -80,8 +80,9 @@ describe_mcp_tooling
 
 ## Load Next Skill
 
-- **Session**: load `xtrader-mcp-agent-ready-session` first if no active session.
-- **Graph plan**: load `xtrader-mcp-agent-ready-graph-plan` for plan creation and validation.
-- **Type/node data**: load `xtrader-mcp-type-node-data` before type mutation, node data mutation, generic params, or array port changes.
-- **Backtest results**: load `xtrader-mcp-backtest-results` for backtest execution or result inspection.
-- **Direct fallback**: load `xtrader-mcp-direct-fallback` only when AgentReady v1 lacks the required capability.
+- **Session**: load `xtrader-session` first if no active session.
+- **Graph plan**: load `xtrader-graph-plan` for plan creation and validation.
+- **Types**: load `xtrader-types` before type mutation.
+- **Nodes**: load `xtrader-nodes` before node data mutation, generic params, or array port changes.
+- **Backtests**: load `xtrader-backtests` for backtest execution or result inspection.
+- **Direct**: load `xtrader-direct` only when AgentReady v1 lacks the required capability.

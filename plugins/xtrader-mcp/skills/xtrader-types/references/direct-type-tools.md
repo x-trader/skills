@@ -1,6 +1,6 @@
-# Direct Type and Node Tools
+# Direct Type Tools
 
-Use Direct MCP only when AgentReady v1 lacks the required type/node detail or mutation capability.
+Use Direct MCP only when AgentReady v1 lacks the required type detail or mutation capability.
 
 ## Read / Inspect
 
@@ -11,7 +11,6 @@ Use Direct MCP only when AgentReady v1 lacks the required type/node detail or mu
 | `get_type_form_schema` | Inspect value/form schema for a type |
 | `check_type_compatibility` | Validate assignability between types |
 | `suggest_type_for_port` | Find compatible type for a port |
-| `get_node_details` | Inspect node schema, ports, type params, form requirements |
 | `analyze_type_usage` | Find graph/type references before mutation |
 | `analyze_type_impact` | Classify safe/warning/breaking impact |
 
@@ -26,7 +25,3 @@ Use Direct MCP only when AgentReady v1 lacks the required type/node detail or mu
 | `rename_type` | Analyze usage first |
 | `move_type` | Low/medium risk; preserve references |
 | `delete_type` | High risk; require confirmation |
-| `set_node_form_data` | Validate graph after setting |
-| `set_input_port_value` | Validate type compatibility |
-| `set_type_param` | Validate generic binding |
-| `set_array_port_types` | Validate array element types |

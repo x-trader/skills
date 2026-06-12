@@ -149,7 +149,7 @@
 | `get_backtest_position` | Low |
 | `get_backtest_position_shapes` | Low |
 
-Backtest tools are Direct MCP-only today. Use `xtrader-mcp-backtest-results` and prefer overview/snapshot/issues/summary tools before raw logs, drawings, or full position lists.
+Backtest tools are Direct MCP-only today. Use `xtrader-backtests` and prefer overview/snapshot/issues/summary tools before raw logs, drawings, or full position lists.
 
 ### Confirmation (3 tools)
 

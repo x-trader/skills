@@ -119,4 +119,4 @@ Filtered out during extraction:
 - Enum parse nodes are `"Parse DayOfWeek"` not `"Enum.Parse"`
 - The package field tells you which assembly a node comes from (e.g., `System.Runtime`, `System.Collections`)
 - Generic names like `List<T>` appear with `<T>` suffix in display names
-- Load this reference when entering the type-node-data skill — the naming patterns are essential for accurate catalog searches
+- Load this reference when entering the `xtrader-nodes` skill — the naming patterns are essential for accurate catalog searches

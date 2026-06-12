@@ -2,7 +2,7 @@
 
 **Route**: `/mcp`
 
-**Skills**: `xtrader-mcp-agent-ready-session`, `xtrader-mcp-direct-fallback`, `xtrader-mcp-agent-ready-governance`
+**Skills**: `xtrader-session`, `xtrader-direct`, `xtrader-governance`
 
 ## Sequence
 
@@ -13,7 +13,7 @@
    - `create_backtest` with project and version parameters
    - `wait_backtest` until completion
    - `get_backtest_snapshot` or `query_backtest_results` for results
-5. Load `xtrader-mcp-backtest-results` for result summaries, issues, logs, symbols, and positions.
+5. Load `xtrader-backtests` for result summaries, issues, logs, symbols, and positions.
 6. After task completes, return to `/mcp/agent-ready/v1`.
 7. Call `get_current_project_context` on AgentReady to refresh session context.
 8. Continue with AgentReady workflow.

@@ -1,6 +1,6 @@
 # Eval: Graph Plan Validation
 
-**Skills under test**: `xtrader-mcp-agent-ready-session`, `xtrader-mcp-agent-ready-catalog`, `xtrader-mcp-agent-ready-graph-plan`, `xtrader-mcp-agent-ready-governance`
+**Skills under test**: `xtrader-session`, `xtrader-catalog`, `xtrader-graph-plan`, `xtrader-governance`
 
 ## Scenario
 
@@ -26,7 +26,7 @@ User asks: "Add a new SMA indicator node to my graph and connect it to the exist
 | Operation-based plan | Uses operation plan or `instantiate_graph_pattern` | Uses `replace_graph` for small change |
 | Port compatibility | Checks `check_port_compatibility` | Connects without checking |
 | Governance | Satisfies snapshot/confirmation requirements | Bypasses governance |
-| Skill activation | Loads `xtrader-mcp-agent-ready-graph-plan` and `xtrader-mcp-agent-ready-governance` | Ignores governance skill |
+| Skill activation | Loads `xtrader-graph-plan` and `xtrader-governance` | Ignores governance skill |
 
 ## Negative Cases
 

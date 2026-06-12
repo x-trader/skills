@@ -2,7 +2,7 @@
 
 **Endpoint**: start with `/mcp/agent-ready/v1`; use `/mcp` only if full type details are required.
 
-**Skills**: `xtrader-mcp-agent-ready-session`, `xtrader-mcp-agent-ready-catalog`, `xtrader-mcp-type-node-data`, `xtrader-mcp-direct-fallback`
+**Skills**: `xtrader-session`, `xtrader-catalog`, `xtrader-types`, `xtrader-direct`
 
 ## Sequence
 

@@ -1,9 +1,9 @@
 ---
-name: xtrader-mcp-agent-ready-session
-description: Opens and manages XTrader AgentReady MCP project sessions, reads bootstrap context and project capabilities, and prepares agents for catalog, graph, or governance workflows on /mcp/agent-ready/v1. Use when connecting to AgentReady MCP for the first time, selecting a project/version, or refreshing session context.
+name: xtrader-session
+description: Use this skill when connecting to XTrader AgentReady MCP for the first time, selecting a project/version, refreshing session context, reading bootstrap capabilities, or preparing catalog, graph, governance, type, node, backtest, or Direct fallback workflows.
 ---
 
-# XTrader MCP AgentReady Session Skill
+# XTrader Session Skill
 
 Load this skill before any AgentReady MCP workflow.
 
@@ -52,9 +52,10 @@ open_project_session or get_agent_bootstrap_context
 
 ## Load Next Skill
 
-- **Governance**: load `xtrader-mcp-agent-ready-governance` before any write or risky operation.
-- **Catalog**: load `xtrader-mcp-agent-ready-catalog` when searching nodes, types, or patterns.
-- **Type/node data**: load `xtrader-mcp-type-node-data` when full type details, node schema, form data, generic params, or array port types are involved.
-- **Graph plan**: load `xtrader-mcp-agent-ready-graph-plan` when creating or editing graphs.
-- **Backtest results**: load `xtrader-mcp-backtest-results` when the user asks to run, inspect, debug, or summarize backtests.
-- **Direct fallback**: load `xtrader-mcp-direct-fallback` only when AgentReady v1 lacks the required capability.
+- **Governance**: load `xtrader-governance` before any write or risky operation.
+- **Catalog**: load `xtrader-catalog` when searching nodes, types, or patterns.
+- **Types**: load `xtrader-types` when type details, compatibility, object/enum types, or type mutation are involved.
+- **Nodes**: load `xtrader-nodes` when node schema, form data, generic params, or array port types are involved.
+- **Graph plan**: load `xtrader-graph-plan` when creating or editing graphs.
+- **Backtests**: load `xtrader-backtests` when the user asks to run, inspect, debug, or summarize backtests.
+- **Direct**: load `xtrader-direct` only when AgentReady v1 lacks the required capability.

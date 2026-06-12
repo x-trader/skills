@@ -1,6 +1,6 @@
 # Eval: Catalog Intent Resolution
 
-**Skills under test**: `xtrader-mcp-agent-ready-session`, `xtrader-mcp-agent-ready-catalog`
+**Skills under test**: `xtrader-session`, `xtrader-catalog`
 
 ## Scenario
 
@@ -25,7 +25,7 @@ User asks: "Add a notification that triggers when an indicator crosses above a t
 | Catalog scope | Searches project-scoped catalog first | Dumps full catalog into context |
 | Port compatibility | Calls `check_port_compatibility` before recommending connections | Assumes compatibility without checking |
 | Adapter awareness | Calls `suggest_adapter_nodes` when ports are incompatible | Ignores port mismatch |
-| Skill activation | Loads `xtrader-mcp-agent-ready-catalog` | Works without loading the skill |
+| Skill activation | Loads `xtrader-catalog` | Works without loading the skill |
 
 ## Negative Cases
 
