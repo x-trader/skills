@@ -43,6 +43,7 @@ skills/xtrader-session
 skills/xtrader-catalog
 skills/xtrader-types
 skills/xtrader-nodes
+skills/xtrader-core-nodes
 skills/xtrader-visual-graphs
 skills/xtrader-graph-plan
 skills/xtrader-governance

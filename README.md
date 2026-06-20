@@ -30,6 +30,7 @@ plugins/xtrader-mcp
 - `xtrader-catalog`
 - `xtrader-types`
 - `xtrader-nodes`
+- `xtrader-core-nodes`
 - `xtrader-visual-graphs`
 - `xtrader-graph-plan`
 - `xtrader-governance`

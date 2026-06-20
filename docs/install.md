@@ -10,7 +10,7 @@ This repository is a skills pack for agents that use XTrader MCP.
    ```
    ls plugins/xtrader-mcp/skills/
    ```
-   Expected output: nine skill directories.
+   Expected output: ten skill directories.
 
 ## Activation
 
@@ -21,10 +21,11 @@ Skills are activated automatically when the task matches their `description` fro
 3. `xtrader-catalog`
 4. `xtrader-types` (when type details, object/enum types, compatibility, or type mutation are involved)
 5. `xtrader-nodes` (when node schema, form data, input values, generic params, or array port types are involved)
-6. `xtrader-visual-graphs` (when VisualNode, FlowGraph, nested visual nodes, public port nodes, or port kinds are involved)
-7. `xtrader-graph-plan`
-8. `xtrader-backtests` (for backtest execution or result analysis)
-9. `xtrader-direct` (only when needed)
+6. `xtrader-core-nodes` (when working with Core visual scripting nodes — arithmetic, logic, flow control, data manipulation, IO ports)
+7. `xtrader-visual-graphs` (when VisualNode, FlowGraph, nested visual nodes, public port nodes, or port kinds are involved)
+8. `xtrader-graph-plan`
+9. `xtrader-backtests` (for backtest execution or result analysis)
+10. `xtrader-direct` (only when needed)
 
 ## Dependencies
 

@@ -110,6 +110,7 @@ Direct fallback tools:
 - **Session**: load `xtrader-session` first if no active session.
 - **Catalog**: load `xtrader-catalog` for node discovery and compatibility.
 - **Types**: load `xtrader-types` for type details, object/enum types, or type mutation.
+- **Core nodes**: load `xtrader-core-nodes` when working with Core visual scripting nodes (arithmetic, logic, flow control, data manipulation, IO ports).
 - **Visual graphs**: load `xtrader-visual-graphs` for VisualNode, FlowGraph, public port nodes, and port-kind workflows.
 - **Graph plan**: load `xtrader-graph-plan` for node data operations in graph plans.
 - **Governance**: load `xtrader-governance` before node-data writes.

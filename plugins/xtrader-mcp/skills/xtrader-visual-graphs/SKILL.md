@@ -124,6 +124,7 @@ Read [validation](references/validation.md) when repairing graph errors.
 - **Session**: load `xtrader-session` first if no active session.
 - **Catalog**: load `xtrader-catalog` to find project/dependency nodes and patterns.
 - **Types**: load `xtrader-types` for object/enum types and compatibility.
+- **Core nodes**: load `xtrader-core-nodes` when working with Core visual scripting nodes (arithmetic, logic, flow control, data manipulation, IO ports).
 - **Nodes**: load `xtrader-nodes` for node schema, form data, input values, type params, and array port types.
 - **Graph plan**: load `xtrader-graph-plan` to create, validate, and apply graph changes.
 - **Governance**: load `xtrader-governance` before writes or risky changes.

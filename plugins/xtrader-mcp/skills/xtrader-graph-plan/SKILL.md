@@ -79,6 +79,7 @@ get_current_project_context (verify active session)
 ## Load Next Skill
 
 - **Governance**: load `xtrader-governance` before apply.
+- **Core nodes**: load `xtrader-core-nodes` when working with Core visual scripting nodes (arithmetic, logic, flow control, data manipulation, IO ports).
 - **Nodes**: load `xtrader-nodes` before node data, form data, input value, type param, or array port operations.
 - **Types**: load `xtrader-types` when graph operations require type details or type mutation.
 - **Visual graphs**: load `xtrader-visual-graphs` when graph operations involve VisualNode structure, public port nodes, nested visual nodes, or port kinds.
