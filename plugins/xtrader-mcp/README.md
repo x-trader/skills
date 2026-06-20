@@ -20,6 +20,7 @@ Primary capabilities:
 - semantic catalog
 - type guidance
 - node data guidance
+- Core node capability guidance
 - visual node and FlowGraph guidance
 - graph pattern search
 - graph plan validation/apply

@@ -14,3 +14,5 @@ The first skill set contains ten MCP-only skills:
 10. `xtrader-direct`
 
 Scope: these skills guide agents that use XTrader MCP tools. They are not for non-MCP workflows.
+
+`xtrader-core-nodes` is an agent-facing capability guide for built-in visual scripting nodes. It should help agents choose and search Core nodes by exact catalog display names rather than by source-code concepts.

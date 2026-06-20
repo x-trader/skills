@@ -5,12 +5,12 @@ Public ports of a project visual node come from official internal port nodes in 
 ## Official Public Port Nodes
 
 ```text
-XTrader.Nodes.Core.IO.ValueInputPort
-XTrader.Nodes.Core.IO.ValueOutputPort
-XTrader.Nodes.Core.IO.SignalInputPort
-XTrader.Nodes.Core.IO.SignalOutputPort
-XTrader.Nodes.Core.IO.FlowInputPort
-XTrader.Nodes.Core.IO.FlowOutputPort
+ValueInputPort
+ValueOutputPort
+SignalInputPort
+SignalOutputPort
+FlowInputPort
+FlowOutputPort
 ```
 
 Only these official types are recognized as public visual-node port nodes.

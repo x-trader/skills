@@ -1,182 +1,188 @@
 # Core Nodes Reference
 
-Core nodes are the building blocks of XTrader Visual Scripting. They are defined in `XTrader.Nodes.Core` and provide flow control, logic, math, data manipulation, and IO infrastructure for visual graphs.
+Core nodes are the built-in visual scripting nodes from the `XTrader.Nodes.Core` package. Use this reference to choose the right node family before searching the MCP catalog or building a graph plan.
 
-Core nodes are **not** extracted from the .NET BCL. They have their own source-generated catalog via `[Node]` and `[Port]` attributes. Use this reference to understand what each node does and when to use it.
+Core nodes are different from .NET runtime nodes. Do not search for them with .NET runtime patterns like `Create List<T>` or `Add List<T>`. Search by Core node display names such as `If`, `ForEach`, `Addition`, `Mapper`, or `ValueInputPort`.
 
-## IO / Port Infrastructure
+## IO / Public Port Nodes
 
-Graph boundary nodes. Expose public ports on visual nodes for value, signal, and flow data.
+Use these nodes inside a visual node graph to expose public inputs and outputs.
 
-| Node | Purpose |
+| Display name | Purpose |
 |---|---|
-| `ValueInputPortNode<T>` | Provide a typed value into a graph from outside. Outputs `Data`. |
-| `ValueOutputPortNode<T>` | Expose a computed value outward. Inputs `Data`. |
-| `SignalInputPortNode` | Accept a signal (no payload) into a graph. Outputs `Data`. |
-| `SignalOutputPortNode` | Emit a signal outward. Inputs `Data`. |
-| `FlowInputPortNode<T>` | Entry point for typed flow (trigger + payload) into a subgraph. |
-| `FlowOutputPortNode<T>` | Exit point for typed flow from a subgraph. |
+| `ValueInputPort` | Creates a public typed value input for the visual node. |
+| `ValueOutputPort` | Creates a public typed value output for the visual node. |
+| `SignalInputPort` | Creates a public signal input with no payload. |
+| `SignalOutputPort` | Creates a public signal output with no payload. |
+| `FlowInputPort` | Creates a public flow input with a typed payload. |
+| `FlowOutputPort` | Creates a public flow output with a typed payload. |
 
-Port nodes add `Name` and `Description` input ports. Use these to create visual-node public ports.
+Agent notes:
 
-## Math / Arithmetic
+- Set the public port name through the node's `Name` input value.
+- Set value/flow port type params from returned node schema only.
+- Load `xtrader-visual-graphs` when exposing visual-node public ports.
 
-Generic over `INumber<T>`. Two numeric inputs (`A`, `B`), one output (`Result`).
+## Math
 
-| Node | Operation | Example |
-|---|---|---|
-| `AdditionNode<T>` | `A + B` | `3 + 5 = 8` |
-| `SubtractionNode<T>` | `A - B` | `10 - 4 = 6` |
-| `MultiplicationNode<T>` | `A * B` | `6 * 7 = 42` |
-| `DivisionNode<T>` | `A / B` | `20 / 4 = 5` |
+Use math nodes for typed numeric operations.
 
-Search by display name: `Addition Int32`, `Subtraction Double`, etc.
+| Display name | Purpose |
+|---|---|
+| `Addition` | Adds two numeric values. |
+| `Subtraction` | Subtracts the second numeric value from the first. |
+| `Multiplication` | Multiplies two numeric values. |
+| `Division` | Divides the first numeric value by the second. |
+
+Agent notes:
+
+- These nodes are typed. Use returned schema/type params to bind `Int32`, `Double`, `Decimal`, or another supported numeric type.
+- Check port compatibility before connecting numeric inputs or outputs.
 
 ## Logic
 
-### Boolean
+Use logic nodes for boolean decisions and conditional values.
 
-| Node | Operation |
+| Display name | Purpose |
 |---|---|
-| `AndNode` | `A && B` |
-| `OrNode` | `A \|\| B` |
-| `NotNode` | `!InputValue` |
+| `And` | Returns true when both boolean inputs are true. |
+| `Or` | Returns true when either boolean input is true. |
+| `Not` | Negates a boolean input. |
+| `TernaryCondition` | Selects one of two typed values based on a boolean condition. |
 
-### Ternary
+## Comparison
 
-| Node | Description |
+Use comparison nodes to compare two values and produce boolean outputs.
+
+| Display name | Purpose |
 |---|---|
-| `TernaryConditionNode<T>` | `Condition ? True : False` — three inputs, one output of type `T`. |
+| `Equal` | Tests whether two values are equal. |
+| `NotEqual` | Tests whether two values are not equal. |
+| `Greater` | Tests whether the first value is greater than the second. |
+| `GreaterOrEqual` | Tests whether the first value is greater than or equal to the second. |
+| `Less` | Tests whether the first value is less than the second. |
+| `LessOrEqual` | Tests whether the first value is less than or equal to the second. |
 
-### Comparison
+Agent notes:
 
-Generic over `T`. Two inputs (`A`, `B`), two boolean outputs (`True`, `False`).
-
-| Node | Operator |
-|---|---|
-| `EqualNode<T>` | `EqualityComparer<T>.Default.Equals(a, b)` |
-| `NotEqualNode<T>` | `!Equals(a, b)` |
-| `GreaterNode<T>` | `Compare(a, b) > 0` |
-| `GreaterOrEqualNode<T>` | `Compare(a, b) >= 0` |
-| `LessNode<T>` | `Compare(a, b) < 0` |
-| `LessOrEqualNode<T>` | `Compare(a, b) <= 0` |
-
-Search by display name: `Equal Int32`, `Greater String`, etc.
+- These nodes are typed. Bind the comparison type from schema, then validate compatibility.
+- Use `If` when a comparison result should drive signal flow.
 
 ## Flow Control
 
-### Branching
+Use flow control nodes to route signal or flow execution.
 
-| Node | Description |
+| Display name | Purpose |
 |---|---|
-| `SequenceNode` | Triggers 4 output signals (`Then0`–`Then3`) in order on input. |
-| `SwitchNode<T>` | Multi-way branch: matches `Selection` against `Case0`–`Case3`, emits matching `Out0`–`Out3` or `Default`. |
-| `DoOnceNode` | Passes signal once until `Reset`. Has `StartClosed` option. |
-| `FlipFlopNode` | Alternates between `A` and `B` outputs on each trigger. |
-| `GateNode` | Allows/blocks signal based on `Open`/`Close`/`Toggle` state. |
-| `IfNode` | Conditional: When signal + `Condition` bool → `True` or `False` signal. |
-| `IfNullNode<T>` | Null-conditional: When signal + nullable `Data` → `IsNull` or `IsNotNull` signal. |
+| `Sequence` | Emits multiple output signals in order from one input signal. |
+| `Switch` | Routes execution to a matching case output or default output. |
+| `DoOnce` | Allows one signal through until reset. |
+| `FlipFlop` | Alternates between two outputs on repeated triggers. |
+| `Gate` | Opens, closes, or toggles whether signals can pass. |
+| `If` | Routes a signal to true or false output based on a boolean condition. |
+| `IfNull` | Routes a signal based on whether a value is null. |
 
-### Type Conversion
+## Type And Flow Adapters
 
-| Node | Description |
+Use adapter nodes when a graph needs to move between value-only and flow-style ports, or cast between types.
+
+| Display name | Purpose |
 |---|---|
-| `ToFlowNode<T>` | Converts a value into a flow (value in → flow out carrying the value). |
-| `FromFlowNode<T>` | Extracts a value from a flow (flow in → `OnData` signal + `Data` value out). |
+| `ToFlow` | Converts a value into a flow payload. |
+| `FromFlow` | Extracts a value from a flow payload and emits a signal. |
+| `Cast` | Attempts to convert one typed value to another and routes success or failure. |
 
-### Type Casting
+Agent notes:
 
-| Node | Description |
+- Prefer `suggest_adapter_nodes` before manually choosing adapters.
+- Use `Cast` only when compatibility metadata or validation supports the conversion.
+
+## Loops
+
+Use loop nodes for repeated execution.
+
+| Display name | Purpose |
 |---|---|
-| `CastNode<TIn, TOut>` | Attempts cast `TIn` → `TOut`. Emits `Success` or `Failure` signal + `Result` value. |
+| `ForEach` | Iterates through a collection, exposing current item and index. |
+| `ForLoop` | Runs an index-based loop from first to last using a step value. |
+| `WhileLoop` | Runs while a condition stays true. |
 
-### Loops
+Agent notes:
 
-| Node | Description |
+- Connect loop body outputs carefully to avoid unexpected repeated side effects.
+- Check item type compatibility for `ForEach` before connecting collection and item ports.
+
+## Timing, Async, And Errors
+
+Use these nodes for delayed execution, asynchronous work, and failure paths.
+
+| Display name | Purpose |
 |---|---|
-| `ForEachNode<T>` | Iterates `IEnumerable<T>`: emits `Body` per-item, `Exit` after. Exposes `Item` and `Index`. |
-| `ForLoopNode` | Index-based loop: `First`/`Last`/`Step` inputs, `Body` per-iteration, `Exit` after. Exposes `Index`. |
-| `WhileLoopNode` | Conditional loop: emits `Body` while `Condition` is true, then `Completed`. |
+| `Delay` | Delays flow for a configured duration. |
+| `AsyncExecutor` | Executes asynchronous result-producing work and exposes the result. |
+| `TryCatch` | Provides try, catch, and finally flow paths plus the caught exception value. |
+| `Throw` | Throws an error from a provided error object or message. |
+| `ThrowIfNull` | Throws when a value is null; otherwise passes through the non-null value. |
 
-### Timing
+Agent notes:
 
-| Node | Description |
+- Treat `Throw`, `ThrowIfNull`, and `TryCatch` as control-flow-affecting nodes.
+- Validate duration input type for `Delay` before setting values.
+
+## Data And State
+
+Use data nodes for state, buffers, delegates, logging, object mapping, property access, and null handling.
+
+| Display name | Purpose |
 |---|---|
-| `DelayNode` | Pauses flow for a `TimeSpan` duration (async `Task.Delay`). |
+| `Variable` | Stores a typed value and exposes the current value. |
+| `Predicate` | Creates a reusable boolean condition from graph logic. |
+| `Func` | Creates a reusable value-producing function from graph logic. |
+| `Buffer` | Collects incoming values and emits a list when the buffer is ready. |
+| `Logger` | Writes a configured log message for debugging or traceability. |
+| `Mapper` | Builds an object from configured input members. |
+| `Select` | Reads one configured property/member from an input object. |
+| `SetProperty` | Updates one configured property/member on an object. |
+| `NullCheck` | Produces booleans for null and not-null checks. |
+| `NullValue` | Produces a null value of the selected type. |
+| `NullCoalesce` | Uses fallback value when input is null. |
+| `NullForgiving` | Treats a nullable value as non-null. Validate before using. |
 
-### Exceptions
+Agent notes:
 
-| Node | Description |
-|---|---|
-| `TryCatchNode` | Try/Catch/Finally signal outputs + `Exception` value output. |
-| `ThrowNode` | Throws exception from `Exception` or `Message` input. |
-| `ThrowIfNullNode<T>` | Validates non-null, throws if null, otherwise passes signal + `Result`. |
-
-### Async
-
-| Node | Description |
-|---|---|
-| `AsyncExecutorNode<T>` | Executes a `Task<T>` (blocking `GetAwaiter().GetResult()`), outputs `Result`. |
-
-## Data
-
-### Variables
-
-| Node | Description |
-|---|---|
-| `VariableNode<T>` | Stateful variable: stores value on signal, exposes current stored value. |
-| `PredicateNode<T>` | Wraps a `Predicate<T>`: outputs a delegate that returns the `Result` input. |
-| `FuncNode<TSource, TResult>` | Wraps a `Func<TSource,TResult>`: outputs a delegate that returns the `Result` input. |
-
-### Collections
-
-| Node | Description |
-|---|---|
-| `BufferNode<T>` | Buffers input values using Rx `Buffer(Count, Skip)`, outputs `List<T>` when buffer is ready. |
-
-### Debug
-
-| Node | Description |
-|---|---|
-| `LoggerNode<TSignal>` | Logs message via `ILogger`, with configurable `LogLevel` and `Key`. Uses JSON serialization. |
-
-### Objects
-
-| Node | Description |
-|---|---|
-| `MapperNode<TOutput, TSlotMembers>` | Constructs typed object from group port Slot members using bindings. |
-| `SelectNode<TInput, TOutput>` | Projects input via selector function (e.g., `x.Property`). |
-| `SetPropertyNode<TTarget, TValue>` | Sets a property on target object when signaled. Has In/Then flow ports. |
-
-### Null Utilities
-
-| Node | Description |
-|---|---|
-| `NullCheckNode<T>` | Outputs `IsNull`/`IsNotNull` booleans. |
-| `NullValueNode<T>` | Provides a constant null value of type `T?`. |
-| `NullCoalesceNode<T>` | Returns `Input ?? Fallback`. |
-| `NullForgivingNode<T>` | Casts `T?` to `T` (null-forgiving `!` operator). |
+- Load `xtrader-nodes` before setting form data for `Mapper`, `Select`, `SetProperty`, or `Logger`.
+- Do not invent property names. Inspect object type details or node form schema first.
+- Prefer `NullCheck` plus `If` when null should control signal flow.
 
 ## Events
 
-| Node | Description |
+| Display name | Purpose |
 |---|---|
-| `OnStartNode` | Entry point: emits `OnStart` signal when graph starts. Implements `IStartupNode`. |
+| `Start` | Graph startup entry point. Use this to begin execution when the graph starts. |
 
-## Node Base Classes
+## Selection Guide
 
-| Base Class | Used By | Key Behavior |
-|---|---|---|
-| `FlowableNode` | `VariableNode`, `BufferNode`, `LoggerNode`, `ForEachNode`, `AsyncExecutorNode`, `ToFlowNode` | Adds `In`/`Then` signal ports, subscribes to `In`, calls abstract `OnSignal`. |
-| `DataNode<T>` | `MapperNode`, `SelectNode`, `SetPropertyNode` | Generic constraint `where T : class`, for form-data-bearing nodes. |
-| `PortNode` | All `*PortNode` | Adds `Name`/`Description` input ports for port-infrastructure nodes. |
-| `ArithmeticNodeBase<T>` | `AdditionNode`, `SubtractionNode`, `MultiplicationNode`, `DivisionNode` | Adds `A`/`B` input ports, `Result` output port. |
-| `ComparisonNodeBase<T>` | `EqualNode`, `NotEqualNode`, `GreaterNode`, `GreaterOrEqualNode`, `LessNode`, `LessOrEqualNode` | Adds `A`/`B` input ports, `True`/`False` boolean output ports. |
+| User intent | Start with |
+|---|---|
+| Expose a public visual-node input/output | IO / Public Port Nodes |
+| Add, subtract, multiply, divide | Math |
+| Combine boolean conditions | Logic |
+| Route execution based on condition | `If` or `Switch` |
+| Run multiple steps in order | `Sequence` |
+| Loop over a collection | `ForEach` |
+| Loop over indexes | `ForLoop` |
+| Handle null values | Null utilities, `IfNull`, or `ThrowIfNull` |
+| Build an object | `Mapper` |
+| Read an object property/member | `Select` |
+| Update an object property/member | `SetProperty` |
+| Add debugging output | `Logger` |
+| Start graph execution | `Start` |
 
 ## Search Guidance
 
 When searching for Core nodes in the catalog:
-- Search by the `[Node("DisplayName")]` attribute name (e.g., `If`, `ForEach`, `Addition`, `Variable`)
-- Core nodes live in the `XTrader.Nodes.Core` package
-- They are excluded from .NET BCL extraction — do not search for them as `Create If` or `Add If`; they are found by their `Node` attribute name
-- Generic nodes appear with their type parameters bound at search time (e.g., `Addition Int32`, `ForEach String`)
+
+- Search by capability and display name: `If`, `ForEach`, `Addition`, `Mapper`, `ValueInputPort`.
+- Include `XTrader.Nodes.Core` as a package/source hint if search results are noisy.
+- Treat returned MCP node details as authoritative for exact node code, ports, form data, and type params.
+- For typed nodes, bind types from schema and validate the graph plan before applying.

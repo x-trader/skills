@@ -1,19 +1,19 @@
 ---
 name: xtrader-core-nodes
-description: Guides agents through XTrader Core nodes — the building blocks of visual graphs. Covers arithmetic, logic, flow control, data manipulation, IO port infrastructure, and events. Use when building, explaining, or planning graphs that use core visual scripting nodes.
+description: Guides agents through XTrader Core node capabilities for visual graphs. Covers arithmetic, logic, flow control, data manipulation, IO port nodes, and events. Use when building, explaining, or planning graphs that use Core visual scripting nodes.
 ---
 
 # XTrader Core Nodes Skill
 
-Load this skill when a task involves building, explaining, or planning graphs that use Core nodes — the building blocks of XTrader Visual Scripting.
+Load this skill when a task involves building, explaining, or planning graphs that use Core nodes, the building blocks of XTrader Visual Scripting.
 
-Core nodes are defined in `XTrader.Nodes.Core` and are separate from .NET BCL runtime nodes. They have their own source-generated catalog via `[Node]` and `[Port]` attributes.
+Core nodes are available through the MCP catalog from the `XTrader.Nodes.Core` package. They are separate from .NET runtime nodes and do not use .NET runtime naming patterns like `Create {TypeName}` or `{MethodName} {TypeName}`.
 
 ## Core Rules
 
-1. Search for Core nodes by their `[Node("DisplayName")]` attribute name in catalog, not by .NET type name patterns.
-2. Never invent node names, port names, or port directions — always use MCP catalog or node detail results.
-3. Core nodes are in the `XTrader.Nodes.Core` package. They are excluded from .NET BCL extraction.
+1. Search for Core nodes by catalog display names, not by .NET runtime node naming patterns.
+2. Never invent node names, port names, or port directions; always use MCP catalog or node detail results.
+3. Core nodes are in the `XTrader.Nodes.Core` package. Treat them as first-class visual scripting nodes, not .NET runtime type/member nodes.
 4. For form data, input values, type params, and array port types, load `xtrader-nodes`.
 5. For VisualNode composition and public ports, load `xtrader-visual-graphs`.
 6. Before graph apply, validate the graph plan.
@@ -22,21 +22,21 @@ Core nodes are defined in `XTrader.Nodes.Core` and are separate from .NET BCL ru
 
 | Category | Nodes | Key Use |
 |---|---|---|
-| IO / Port | `ValueInputPortNode`, `ValueOutputPortNode`, `SignalInputPortNode`, `SignalOutputPortNode`, `FlowInputPortNode`, `FlowOutputPortNode` | Graph boundary, public ports |
-| Math | `AdditionNode<T>`, `SubtractionNode<T>`, `MultiplicationNode<T>`, `DivisionNode<T>` | Numeric arithmetic |
-| Logic | `AndNode`, `OrNode`, `NotNode`, `TernaryConditionNode<T>` | Boolean logic |
-| Comparison | `EqualNode<T>`, `NotEqualNode<T>`, `GreaterNode<T>`, `LessNode<T>`, `GreaterOrEqualNode<T>`, `LessOrEqualNode<T>` | Value comparison |
-| Flow Control | `SequenceNode`, `SwitchNode<T>`, `DoOnceNode`, `FlipFlopNode`, `GateNode`, `IfNode`, `IfNullNode<T>` | Branching, gating |
-| Loops | `ForEachNode<T>`, `ForLoopNode`, `WhileLoopNode` | Iteration |
-| Type Conversion | `ToFlowNode<T>`, `FromFlowNode<T>`, `CastNode<TIn, TOut>` | Value ↔ flow, casting |
-| Exceptions | `TryCatchNode`, `ThrowNode`, `ThrowIfNullNode<T>` | Error handling |
-| Timing | `DelayNode` | Async delay |
-| Async | `AsyncExecutorNode<T>` | Execute Task\<T\> |
-| Variables | `VariableNode<T>`, `PredicateNode<T>`, `FuncNode<TSource, TResult>` | Stateful values, delegates |
-| Collections | `BufferNode<T>` | Buffer values into lists |
-| Objects | `MapperNode`, `SelectNode`, `SetPropertyNode` | Object construction, projection, mutation |
-| Null Utilities | `NullCheckNode<T>`, `NullValueNode<T>`, `NullCoalesceNode<T>`, `NullForgivingNode<T>` | Null handling |
-| Events | `OnStartNode` | Graph startup entry point |
+| IO / Port | `ValueInputPort`, `ValueOutputPort`, `SignalInputPort`, `SignalOutputPort`, `FlowInputPort`, `FlowOutputPort` | Graph boundary, public ports |
+| Math | `Addition`, `Subtraction`, `Multiplication`, `Division` | Numeric arithmetic |
+| Logic | `And`, `Or`, `Not`, `TernaryCondition` | Boolean logic |
+| Comparison | `Equal`, `NotEqual`, `Greater`, `Less`, `GreaterOrEqual`, `LessOrEqual` | Value comparison |
+| Flow Control | `Sequence`, `Switch`, `DoOnce`, `FlipFlop`, `Gate`, `If`, `IfNull` | Branching, gating |
+| Loops | `ForEach`, `ForLoop`, `WhileLoop` | Iteration |
+| Type Conversion | `ToFlow`, `FromFlow`, `Cast` | Value to flow, flow to value, casting |
+| Exceptions | `TryCatch`, `Throw`, `ThrowIfNull` | Error handling |
+| Timing | `Delay` | Async delay |
+| Async | `AsyncExecutor` | Execute asynchronous result-producing work |
+| Variables | `Variable`, `Predicate`, `Func` | Stateful values and reusable predicates/functions |
+| Collections | `Buffer` | Buffer values into lists |
+| Objects | `Mapper`, `Select`, `SetProperty` | Object construction, projection, mutation |
+| Null Utilities | `NullCheck`, `NullValue`, `NullCoalesce`, `NullForgiving` | Null handling |
+| Events | `Start` | Graph startup entry point |
 
 ## AgentReady-First Workflow
 
@@ -48,11 +48,11 @@ search_catalog or suggest_nodes_for_intent
 -> validate_graph_plan before apply
 ```
 
-Search Core nodes by display name (e.g., `If`, `ForEach`, `Addition`, `Variable`). Generic nodes appear with type params bound (e.g., `Addition Int32`, `ForEach String`).
+Search Core nodes by display name (e.g., `If`, `ForEach`, `Addition`, `Variable`). Typed nodes may appear with concrete type bindings in catalog results, such as `Addition Int32` or `ForEach String`.
 
 ## Load References
 
-- Read [core-nodes-reference](references/core-nodes-reference.md) for the full node catalog, descriptions, and base class hierarchy.
+- Read [core-nodes-reference](references/core-nodes-reference.md) for the full agent-facing node catalog and search guidance.
 
 ## Load Next Skill
 

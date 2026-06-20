@@ -7,17 +7,17 @@ description: Use this skill when creating, explaining, editing, or composing XTr
 
 Load this skill when a task involves VisualNode structure, FlowGraph shape, nested visual-node composition, public port exposure, or port-kind reasoning.
 
-This skill is MCP-only. Do not use it as guidance for writing custom C# runtime node classes; use it to operate through XTrader MCP catalog, node detail, graph plan, validation, and controlled Direct fallback workflows.
+This skill is MCP-only. Use it to operate through XTrader MCP catalog, node detail, graph plan, validation, and controlled Direct fallback workflows. Do not use it as implementation guidance.
 
 ## Core Model
 
 1. A `VisualNode` is a project-created node/script whose implementation is an internal `FlowGraph`.
 2. The internal graph is stored as `VisualNodeData(FlowGraph Graph)`.
-3. A visual node compiles into a reusable runtime node class and can be added inside another visual node graph like any other available node.
+3. A visual node becomes a reusable catalog node and can be added inside another visual node graph like any other available node.
 4. A `FlowGraph` contains `nodes`, `edges`, and optional `viewport`.
 5. A graph node has `id`, `type`, optional `nodeId`, `data`, and optional position metadata.
 6. A graph edge connects `source.sourceHandle` to `target.targetHandle`.
-7. Public ports of a visual node are derived from special internal port nodes in `XTrader.Nodes.Core.IO`.
+7. Public ports of a visual node are derived from official Core IO public port nodes.
 
 ## Port Kinds
 
@@ -35,12 +35,12 @@ Read [port kinds](references/port-kinds.md) when choosing or validating connecti
 
 To expose a public port on a visual node, add one of these internal port nodes to its graph:
 
-- `XTrader.Nodes.Core.IO.ValueInputPort`
-- `XTrader.Nodes.Core.IO.ValueOutputPort`
-- `XTrader.Nodes.Core.IO.SignalInputPort`
-- `XTrader.Nodes.Core.IO.SignalOutputPort`
-- `XTrader.Nodes.Core.IO.FlowInputPort`
-- `XTrader.Nodes.Core.IO.FlowOutputPort`
+- `ValueInputPort`
+- `ValueOutputPort`
+- `SignalInputPort`
+- `SignalOutputPort`
+- `FlowInputPort`
+- `FlowOutputPort`
 
 Port-node rules:
 
@@ -48,7 +48,7 @@ Port-node rules:
 2. `InputPortsValues["Description"]` is optional.
 3. Value and flow port nodes require `TypeParams["T"]`.
 4. Signal port nodes do not carry a value type.
-5. Only official `XTrader.Nodes.Core.IO.*` port nodes count as visual-node public port nodes.
+5. Only official Core IO public port nodes count as visual-node public port nodes.
 6. Do not invent external schema ports manually; make them through graph port nodes and validation.
 
 Read [port node patterns](references/port-node-patterns.md) before exposing public ports.
@@ -105,7 +105,7 @@ Before apply, validate that:
 - required user-provided type params are set;
 - required form data fields are present;
 - `ArrayPorts` only target existing `ArrayPortSchema` or `GroupPortSchema` ports;
-- visual-node public ports are represented by official `XTrader.Nodes.Core.IO.*` port nodes.
+- visual-node public ports are represented by official Core IO public port nodes.
 
 Read [validation](references/validation.md) when repairing graph errors.
 
@@ -113,7 +113,7 @@ Read [validation](references/validation.md) when repairing graph errors.
 
 - Assuming `SelectNode` has array ports; it has value input/output ports.
 - Inventing visual-node public ports outside the internal port-node pattern.
-- Using non-`XTrader.Nodes.Core.IO` port node types for public ports.
+- Using non-Core IO node types for public ports.
 - Connecting `array` to `value` or `signal` to `flow` without schema support.
 - Using dotted handles without checking whether the root port is group/array-compatible.
 - Setting `TypeParams`, `FormData`, `InputPortsValues`, or `ArrayPorts` from guesses.

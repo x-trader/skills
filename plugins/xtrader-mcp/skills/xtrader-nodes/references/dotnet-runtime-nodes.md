@@ -100,7 +100,7 @@ Filtered out during extraction:
 - Compiler-generated types starting with `<`
 - Types ending with `Attribute` (e.g., `ObsoleteAttribute`)
 - Non-generic types containing `<` in display name
-- Visual scripting nodes (inherit from `Node`/`FlowableNode`/`PortNode` or annotated with `[Node]`)
+- Visual scripting nodes that already appear as first-class catalog nodes, such as Core nodes
 
 ## Excluded Members
 

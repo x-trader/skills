@@ -45,5 +45,6 @@ plugins/xtrader-mcp
 - Never dump the full catalog into prompt context.
 - Never dump full backtest logs, drawings, or positions into prompt context.
 - Never guess node codes.
-- Never invent visual-node public ports outside official `XTrader.Nodes.Core.IO.*` port nodes.
+- Use Core node display names from `xtrader-core-nodes` when searching built-in visual scripting nodes.
+- Never invent visual-node public ports outside official Core IO public port nodes.
 - Prefer plans, validation, governance, and controlled apply flows.
